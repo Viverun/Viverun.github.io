@@ -225,8 +225,8 @@ button:focus-visible {
   background: var(--action);
   border-radius: var(--hair);
 }
-.nav-resume,
-.nav-resume[aria-current="true"] {
+.nav-links a.nav-resume,
+.nav-links a.nav-resume[aria-current="true"] {
   color: var(--on-accent);
   background: var(--action);
   padding: var(--sp-2) var(--sp-3);
@@ -234,7 +234,7 @@ button:focus-visible {
   font-weight: 500;
   padding-bottom: var(--sp-2);
 }
-.nav-resume:hover { background: var(--action-hi); color: var(--on-accent); }
+.nav-links a.nav-resume:hover { background: var(--action-hi); color: var(--on-accent); }
 .nav-resume::after { display: none; }
 
 .nav-toggle {
@@ -554,7 +554,7 @@ button:focus-visible {
   font-size: var(--fs-mono-xs);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--text-faint);
+  color: var(--text-muted);
 }
 .credential-val {
   font-family: var(--font-mono);
