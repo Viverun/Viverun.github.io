@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jamil Khan — GenAI Engineer</title>
+<meta name="description" content="Jamil Khan — GenAI Engineer building multi-agent systems for security, fraud detection, and legal NLP." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-nav" id="site-nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-logo">Jamil Khan<span class="nav-logo-dot">.</span></a>
+
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <a href="assets/Jamil-Khan-Resume.pdf" class="nav-resume" target="_blank" rel="noopener">Résumé ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow">GenAI Engineer</p>
+        <h1 class="hero-title">I build AI systems that reason through ambiguity — not just respond to it.</h1>
+        <p class="hero-sub">Third-year Computer Engineering student designing multi-agent systems for security, fraud detection, and legal NLP — from LangGraph orchestration down to production deployment.</p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">View projects</a>
+          <a href="assets/Jamil-Khan-Resume.pdf" class="btn btn-ghost" target="_blank" rel="noopener">Get résumé</a>
+        </div>
+        <ul class="stat-strip">
+          <li><span class="stat-num">2×</span><span class="stat-label">Hackathon wins</span></li>
+          <li><span class="stat-num">1,084+</span><span class="stat-label">HF dataset downloads</span></li>
+          <li><span class="stat-num">3rd yr</span><span class="stat-label">B.E. Computer Engineering</span></li>
+        </ul>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <canvas id="graphCanvas"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="section-inner about-grid">
+      <div class="about-copy">
+        <p class="eyebrow">About</p>
+        <h2 class="section-title">Currently building agentic systems, one graph at a time.</h2>
+        <p>I'm Jamil, a third-year Computer Engineering student at A.P. Shah Institute of Technology, Thane, working toward a GenAI engineering internship. My focus is agent orchestration — building systems with LangChain, LangGraph, and MCP that don't just generate text, but plan, validate, and act inside real workflows: catching fraud in banking transactions, flagging vulnerabilities in web APIs, and structuring decades of Indian court judgments into usable legal data.</p>
+        <p>When I'm not building, I'm usually deep in a chess position or reading up on the newest AI tooling — and occasionally looking up at actual stars instead of dependency graphs.</p>
+      </div>
+
+      <ul class="fact-list">
+        <li><span class="fact-label">Education</span><span class="fact-value">B.E. Computer Engineering, A.P. Shah Institute of Technology (2024–2028)</span></li>
+        <li><span class="fact-label">Currently deepening</span><span class="fact-value">Agentic AI orchestration</span></li>
+        <li><span class="fact-label">Award</span><span class="fact-value">Apify Partner Program Winner — Hack This Fall 2025</span></li>
+        <li><span class="fact-label">Award</span><span class="fact-value">Hackathon Winner — TechXpression 2025</span></li>
+        <li><span class="fact-label">Elsewhere</span><span class="fact-value"><a href="https://github.com/Viverun" target="_blank" rel="noopener">github.com/Viverun</a> · <a href="https://huggingface.co/Viverun" target="_blank" rel="noopener">huggingface.co/Viverun</a></span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section section-alt" id="skills">
+    <div class="section-inner">
+      <p class="eyebrow">Skills</p>
+      <h2 class="section-title">The stack behind the agents.</h2>
+
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h3>Core</h3>
+          <ul class="skill-tags">
+            <li>Python</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Agent orchestration</h3>
+          <ul class="skill-tags">
+            <li>LangChain</li>
+            <li>LangGraph</li>
+            <li>MCP</li>
+            <li>Multi-agent systems</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Infra &amp; tooling</h3>
+          <ul class="skill-tags">
+            <li>Docker</li>
+            <li>Git</li>
+            <li>Databases</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section" id="projects">
+    <div class="section-inner">
+      <p class="eyebrow">Projects</p>
+      <h2 class="section-title">Four systems, four different kinds of judgment calls.</h2>
+
+      <div class="project-grid">
+
+        <article class="project-card">
+          <p class="project-tag">Self-initiated · Security</p>
+          <h3>MATRIX</h3>
+          <p>An AI platform for automated web and API vulnerability assessment. AI security agents orchestrate scans, validate findings with an LLM to cut false positives, and suggest remediations — covering SQLi, XSS, and API/auth flaws.</p>
+          <ul class="tech-chips">
+            <li>Python</li><li>Multi-agent systems</li><li>LLM validation</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://github.com/Viverun" target="_blank" rel="noopener">Code ↗</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <p class="project-tag">🏆 Apify Partner Program Winner — Hack This Fall 2025</p>
+          <h3>Playlistify AI</h3>
+          <p>Reads mood and intent from natural language across four languages, then builds and evolves Spotify playlists through a hybrid recommendation engine with caching and rate-limiting. Ships as an MCP-integrated Apify Actor.</p>
+          <ul class="tech-chips">
+            <li>NLP</li><li>OAuth</li><li>Docker</li><li>MCP</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://github.com/avanishkasar/Playlistify-AI" target="_blank" rel="noopener">Code ↗</a>
+            <a href="https://playlistify.up.railway.app" target="_blank" rel="noopener">Live ↗</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <p class="project-tag">🏆 Hackathon Winner — TechXpression 2025</p>
+          <h3>FraudGuard AI</h3>
+          <p>Real-time fraud detection for banking and UPI transactions, using a Variational Autoencoder to flag anomalies as they happen rather than after the fact.</p>
+          <ul class="tech-chips">
+            <li>Anomaly detection</li><li>VAE</li><li>Real-time</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://github.com/Viverun" target="_blank" rel="noopener">Code ↗</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <p class="project-tag">Open source · 1,084+ HF downloads</p>
+          <h3>JITS</h3>
+          <p>An open-source NLP pipeline that converts Indian court judgments into structured legal data — dataset and pipeline published on GitHub and Hugging Face, now with a permanent DOI.</p>
+          <ul class="tech-chips">
+            <li>NLP</li><li>Data pipeline</li><li>Legal tech</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://github.com/Viverun" target="_blank" rel="noopener">Code ↗</a>
+            <a href="https://huggingface.co/datasets/Viverun/jits-legal-dataset" target="_blank" rel="noopener">Dataset ↗</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section section-alt" id="contact">
+    <div class="section-inner contact-inner">
+      <p class="eyebrow">Contact</p>
+      <h2 class="section-title">Let's build something that has to work.</h2>
+      <p class="contact-sub">Open to GenAI engineering internships and collaborations.</p>
+
+      <div class="contact-links">
+        <a href="mailto:your.email@example.com">Email</a>
+        <a href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/Viverun" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://huggingface.co/Viverun" target="_blank" rel="noopener">Hugging Face</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="section-inner footer-inner">
+    <span>© 2026 Jamil Khan.</span>
+    <a href="#top">Back to top ↑</a>
+  </div>
+</footer>
+
+<script src="assets/script.js"></script>
+</body>
+</html>
