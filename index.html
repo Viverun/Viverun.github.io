@@ -31,7 +31,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="assets/style.css" />
+<!-- ?v= is bumped whenever the palette or the graph engine changes. Without
+     it a returning visitor can pair new HTML with a cached old stylesheet,
+     which is how the navy came back after the repalette. -->
+<link rel="stylesheet" href="assets/style.css?v=3" />
 
 <!-- No JS: the canvases can't draw, so hide them and show the written
      version of every diagram instead. Never a blank box. -->
@@ -399,6 +402,6 @@
   </div>
 </footer>
 
-<script src="assets/script.js"></script>
+<script src="assets/script.js?v=3"></script>
 </body>
 </html>

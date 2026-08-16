@@ -127,7 +127,20 @@
   if (!canvases.length) return;
 
   var css = getComputedStyle(document.documentElement);
-  function rgb(name, a) { return 'rgba(' + css.getPropertyValue(name).trim() + ',' + a + ')'; }
+
+  /* If the stylesheet a visitor has cached predates one of these tokens,
+     getPropertyValue returns '' and every colour becomes the invalid string
+     "rgba(,0.5)" — canvas ignores it and keeps the last fill, so the whole
+     diagram goes muddy. Fall back to the literal instead of failing quietly. */
+  var FALLBACK = {
+    '--rgb-action': '95, 224, 214',
+    '--rgb-proc':   '167, 139, 250',
+    '--rgb-flag':   '238, 116, 128',
+    '--rgb-text':   '240, 241, 243'
+  };
+  function rgb(name, a) {
+    return 'rgba(' + (css.getPropertyValue(name).trim() || FALLBACK[name]) + ',' + a + ')';
+  }
   var ACTION = function (a) { return rgb('--rgb-action', a); };
   var PROC   = function (a) { return rgb('--rgb-proc', a); };
   var FLAG   = function (a) { return rgb('--rgb-flag', a); };

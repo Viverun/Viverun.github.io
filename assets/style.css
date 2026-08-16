@@ -25,10 +25,10 @@
      Near-neutral and genuinely dark. The old navy tinted every accent
      toward its own hue; on this ground the cyan, amber, violet and rose
      are the only colour on the page, which is the point. */
-  --bg:                 #0A0B0E;
-  --surface:            #121419;
-  --surface-2:          #1A1D24;
-  --on-accent:          #0A0B0E;
+  --bg:                 #0A0B0D;
+  --surface:            #121316;
+  --surface-2:          #1A1B20;
+  --on-accent:          #0A0B0D;
 
   /* --- semantic accents --- */
   --verified:           #F2A754;
@@ -37,20 +37,20 @@
   --action-hi:          #8AEDE5;
 
   /* --- text --- */
-  --text:               #F0F1F3;
-  --text-muted:         #A2A5AD;
-  --text-faint:         #8E919B;
+  --text:               #F1F1F2;
+  --text-muted:         #A5A6AA;
+  --text-faint:         #919297;
 
   /* --- lines --- */
-  --border:             rgba(240, 241, 243, 0.08);
-  --border-strong:      rgba(240, 241, 243, 0.16);
-  --nav-bg:             rgba(10, 11, 14, 0.86);
+  --border:             rgba(241, 241, 242, 0.08);
+  --border-strong:      rgba(241, 241, 242, 0.16);
+  --nav-bg:             rgba(10, 11, 13, 0.86);
 
   /* --- canvas-only channels (rgb triplets for alpha compositing) --- */
   --rgb-action:         95, 224, 214;
   --rgb-proc:           167, 139, 250;   /* #A78BFA — the model, processing */
   --rgb-flag:           238, 116, 128;   /* #EE7480 — risk raised / blocked */
-  --rgb-text:           240, 241, 243;
+  --rgb-text:           241, 241, 242;
 
   /* --- type families --- */
   --font-display:       'Space Grotesk', system-ui, sans-serif;
@@ -370,17 +370,17 @@ button:focus-visible {
   background:
     linear-gradient(var(--viz-line) var(--hair), transparent var(--hair)) 0 0 / 100% 30px,
     linear-gradient(90deg, var(--viz-line) var(--hair), transparent var(--hair)) 0 0 / 30px 100%,
-    /* kept low on purpose: every label sits on this ground, and a heavier
-       tint costs the rose and grey states their AA contrast */
-    radial-gradient(circle at 24% 10%, rgba(var(--rgb-proc), 0.07), transparent 55%),
-    radial-gradient(circle at 78% 88%, rgba(var(--rgb-action), 0.07), transparent 55%),
+    /* Barely there. A heavier tint both costs the rose and grey states their
+       AA contrast and drags the panel back toward the navy this page left. */
+    radial-gradient(circle at 24% 10%, rgba(var(--rgb-proc), 0.045), transparent 55%),
+    radial-gradient(circle at 78% 88%, rgba(var(--rgb-action), 0.04), transparent 55%),
     var(--viz-ground);
   border: var(--hair) solid var(--border);
   overflow: hidden;
   display: flex;
   flex-direction: column;
 }
-:root { --viz-line: rgba(240, 241, 243, 0.032); }
+:root { --viz-line: rgba(241, 241, 242, 0.034); }
 
 .viz-head {
   display: flex;
