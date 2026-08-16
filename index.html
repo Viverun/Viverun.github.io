@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Jamil Khan — Agentic Developer</title>
-<meta name="description" content="Jamil Khan builds agent systems that decide what's real: an eight-agent security scanner, a VAE fraud engine, and a court-judgment dataset with a citable DOI." />
+<meta name="description" content="Jamil Khan builds the part that decides: an eight-agent security scanner behind an LLM exploitability gate, a VAE fraud engine, and a court-judgment dataset with a citable DOI." />
 <meta name="author" content="Jamil Khan" />
 <meta name="theme-color" content="#0A0B0E" />
 <link rel="canonical" href="https://viverun.github.io/" />
@@ -133,7 +133,7 @@
           <div class="project-body">
             <p class="project-tag">Self-initiated · Security</p>
             <h3>MATRIX</h3>
-            <p>An autonomous scanner that points eight specialist agents at a web application: SQL injection, XSS, CSRF, SSRF, command injection, authentication, API security, and repository secrets. Each agent works from a shared scan context, so evidence one turns up narrows the search for the others. Findings then reach an intelligence layer where a Llama 3.3 70B pass, confidence scoring, and an exploitability gate downgrade anything that cannot actually be exploited. What survives comes out as a CVSS v3.1 report with CWE mappings.</p>
+            <p>An autonomous scanner that points eight specialist agents at a web application: SQL injection, XSS, CSRF, SSRF, command injection, authentication, API security, and repository secrets. Each agent works from a shared scan context, so evidence one turns up narrows the search for the others. Findings then reach an intelligence layer where a Llama 3.3 70B pass, confidence scoring, and an exploitability gate downgrade anything that cannot actually be exploited. What survives comes out as a CVSS v3.1 report with CWE mappings. Detection is validated against OWASP's intentionally vulnerable applications, so the numbers come from a known ground truth rather than from the scanner grading itself.</p>
 
             <ul class="tech-chips">
               <li>Python</li><li>FastAPI</li><li>Redis Queue</li><li>Next.js</li><li>Multi-agent</li>
@@ -401,6 +401,26 @@
     <a href="#top">Back to top ↑</a>
   </div>
 </footer>
+
+<!-- Recruiters google the name before they open the site; this is what a
+     search engine reads to connect the name to the work. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Jamil Khan",
+  "url": "https://viverun.github.io/",
+  "jobTitle": "Agentic Developer",
+  "email": "mailto:khanjamilahmed202@gmail.com",
+  "alumniOf": { "@type": "CollegeOrUniversity", "name": "A.P. Shah Institute of Technology" },
+  "knowsAbout": ["Multi-agent orchestration", "LLM evaluation", "Anomaly detection", "Legal NLP", "Model Context Protocol"],
+  "sameAs": [
+    "https://github.com/Viverun",
+    "https://huggingface.co/Viverun",
+    "https://www.linkedin.com/in/jamil-khan-55a621346/"
+  ]
+}
+</script>
 
 <script src="assets/script.js?v=3"></script>
 </body>
