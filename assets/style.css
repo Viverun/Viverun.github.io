@@ -1,19 +1,24 @@
 /* =========================================================
    Tokens
 
-   Colour has three jobs on this page and each accent does
-   exactly one of them:
+   Two colour languages, and they never overlap.
 
+   PAGE CHROME — text, links, chips, numbers:
      --verified  amber  something outside this page confirmed it
                         (awards, DOI, download counts, proof numbers)
      --action    cyan   you can interact with it
                         (links, buttons, focus rings, active nav)
-     --rgb-flag  rose   a raised but unconfirmed finding
-                        (hero canvas only — never appears in chrome)
 
-   The hero teaches the code in the first three seconds, so by the
-   time the JITS DOI shows up in amber, "amber means someone else
-   checked this" is already installed.
+   DIAGRAMS — the five system canvases, and nowhere else:
+     grey               inactive, or finished with nothing to report
+     --rgb-proc  violet the model itself, and neutral processing
+     --rgb-flag  rose   a risk raised, or an action blocked
+     --rgb-action cyan  evaluated and passed — the gate and what survives it
+
+   Amber is deliberately absent from every canvas. It is the page's
+   one "someone else checked this" signal, and a diagram can't earn
+   it: nothing drawn here is external evidence. So the diagrams stay
+   grey/violet/rose/cyan, and amber keeps meaning exactly one thing.
    ========================================================= */
 :root {
   /* --- surfaces --- */
@@ -27,7 +32,6 @@
   --verified-soft:      rgba(242, 167, 84, 0.12);
   --action:             #5FE0D6;
   --action-hi:          #8AEDE5;
-  --action-soft:        rgba(95, 224, 214, 0.12);
 
   /* --- text --- */
   --text:               #EDEFF7;
@@ -40,9 +44,9 @@
   --nav-bg:             rgba(11, 15, 31, 0.86);
 
   /* --- canvas-only channels (rgb triplets for alpha compositing) --- */
-  --rgb-verified:       242, 167, 84;
   --rgb-action:         95, 224, 214;
-  --rgb-flag:           232, 100, 110;
+  --rgb-proc:           167, 139, 250;   /* #A78BFA — the model, processing */
+  --rgb-flag:           238, 116, 128;   /* #EE7480 — risk raised / blocked */
   --rgb-text:           237, 239, 247;
 
   /* --- type families --- */
@@ -346,33 +350,81 @@ button:focus-visible {
   max-width: 20ch;
 }
 
-/* --- hero visual --- */
-.hero-visual {
+/* =========================================================
+   Diagram panel
+
+   One component, five instances: the hero and one per project.
+   Each is an instrument housing — chrome at the top, the system
+   underneath, a plain-English caption at the bottom. The grid is
+   drawn at an alpha you notice only once you're looking for it;
+   its job is to say "measured", not to decorate.
+   ========================================================= */
+.viz {
+  --viz-ground: var(--surface-2);
   position: relative;
   padding: var(--sp-4);
   border-radius: var(--radius-lg);
   background:
-    radial-gradient(circle at 26% 14%, var(--verified-soft), transparent 52%),
-    radial-gradient(circle at 74% 84%, var(--action-soft), transparent 52%),
-    var(--surface-2);
+    linear-gradient(var(--viz-line) var(--hair), transparent var(--hair)) 0 0 / 100% 30px,
+    linear-gradient(90deg, var(--viz-line) var(--hair), transparent var(--hair)) 0 0 / 30px 100%,
+    /* kept low on purpose: every label sits on this ground, and a heavier
+       tint costs the rose and grey states their AA contrast */
+    radial-gradient(circle at 24% 10%, rgba(var(--rgb-proc), 0.07), transparent 55%),
+    radial-gradient(circle at 78% 88%, rgba(var(--rgb-action), 0.07), transparent 55%),
+    var(--viz-ground);
   border: var(--hair) solid var(--border);
+  overflow: hidden;
   display: flex;
   flex-direction: column;
 }
-.hero-visual-label {
+:root { --viz-line: rgba(237, 239, 247, 0.028); }
+
+.viz-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-2);
+}
+.viz-title {
   font-family: var(--font-mono);
   font-size: var(--fs-mono-xs);
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--text-faint);
-  margin: 0 0 var(--sp-2);
+  color: var(--text-muted);
+  margin: 0;
 }
-#agentCanvas {
+/* live phase readout — updated only when the phase changes, not per frame */
+.viz-status {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-xs);
+  letter-spacing: 0.04em;
+  color: var(--text-faint);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+.viz-status::before {
+  content: "";
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  flex: none;
+}
+.viz-status[data-state="proc"]     { color: rgb(var(--rgb-proc)); }
+.viz-status[data-state="flag"]     { color: rgb(var(--rgb-flag)); }
+.viz-status[data-state="approved"] { color: var(--action); }
+
+/* The ratio only reserves space before the script runs. Once it does,
+   each graph measures the height its own rows and labels need and sets
+   it inline — see neededInner() in script.js. */
+.viz-canvas {
   width: 100%;
-  aspect-ratio: 1 / 0.94;
+  aspect-ratio: 4 / 4.3;
   display: block;
 }
-.hero-visual figcaption {
+.viz figcaption {
   font-family: var(--font-body);
   font-size: var(--fs-mono-data);
   line-height: 1.5;
@@ -381,6 +433,9 @@ button:focus-visible {
   padding-top: var(--sp-3);
   border-top: var(--hair) solid var(--border);
 }
+
+/* the two hackathon cards sit side by side, so their panels run wider */
+.project-pair .viz { --viz-ground: var(--surface); margin: 0 0 var(--sp-5); }
 
 /* static fallback — canvas failure or no JS. Never a blank box. */
 .graph-fallback { display: flex; flex-direction: column; gap: var(--sp-1); padding: var(--sp-2) 0; }
@@ -404,7 +459,7 @@ button:focus-visible {
   background: var(--text-faint);
   transform: translateY(-50%);
 }
-.graph-fallback li:last-child::before { background: var(--verified); }
+.graph-fallback li:last-child::before { background: var(--action); }
 .graph-fallback li b { color: var(--text); font-weight: 600; }
 .graph-fallback li i { display: block; font-style: normal; color: var(--text-faint); font-size: var(--fs-mono-xs); }
 
@@ -501,7 +556,7 @@ button:focus-visible {
 
 .project-card.is-featured {
   display: grid;
-  grid-template-columns: minmax(0, 1.55fr) minmax(0, 0.85fr);
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
   gap: var(--sp-7);
   background: var(--surface-2);
   padding: var(--sp-7);
@@ -583,13 +638,22 @@ a.credential-val:hover { border-color: var(--verified); }
 }
 .project-links a:hover { border-color: var(--action); }
 
-/* metrics well — only projects with verified numbers can fill one */
-.project-metrics {
-  border-left: var(--hair) solid var(--border);
-  padding-left: var(--sp-6);
+.project-viz { min-width: 0; }
+
+/* The numbers sit under the copy they belong to, not off in the rail.
+   That way the left column grows to meet the panel instead of leaving
+   a well beneath it. */
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--sp-5);
+  margin-top: var(--sp-6);
+  padding-top: var(--sp-5);
+  border-top: var(--hair) solid var(--border);
 }
-.project-metrics ul { display: flex; flex-direction: column; gap: var(--sp-5); }
-.project-metrics li { display: flex; flex-direction: column; gap: var(--sp-1); }
+.metric-grid li { display: flex; flex-direction: column; gap: var(--sp-1); }
+/* metric labels wrap to two lines; the chips need clear air under them */
+.metric-grid + .tech-chips { margin-top: var(--sp-5); }
 .metric-num {
   font-family: var(--font-display);
   font-size: var(--fs-metric);
@@ -654,17 +718,9 @@ a.credential-val:hover { border-color: var(--verified); }
    ========================================================= */
 @media (max-width: 940px) {
   .project-card.is-featured { grid-template-columns: 1fr; gap: var(--sp-6); }
-  .project-metrics {
-    border-left: none;
-    border-top: var(--hair) solid var(--border);
-    padding-left: 0;
-    padding-top: var(--sp-5);
-  }
-  .project-metrics ul {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--sp-5);
-  }
+  /* stacked, the panel would run the card's full width — cap it so the
+     diagrams stay a readable size instead of ballooning */
+  .project-viz .viz, .project-pair .viz { max-width: 480px; }
 }
 
 @media (max-width: 860px) {
@@ -721,14 +777,18 @@ a.credential-val:hover { border-color: var(--verified); }
 
   .project-card { padding: var(--sp-5); }
   .project-card.is-featured { padding: var(--sp-5); }
-  .project-metrics ul { grid-template-columns: 1fr; gap: var(--sp-4); }
-  .project-metrics li { flex-direction: row; align-items: baseline; gap: var(--sp-3); }
+  .metric-grid { grid-template-columns: 1fr; gap: var(--sp-4); }
+  .metric-grid li { flex-direction: row; align-items: baseline; gap: var(--sp-3); }
   .metric-num { min-width: 5ch; }
+}
+
+@media (max-width: 560px) {
+  .viz-status { display: none; }
 }
 
 @media (max-width: 400px) {
   :root { --gutter: 16px; --fs-body-l: 16.5px; }
-  .hero-visual { padding: var(--sp-3); }
+  .viz { padding: var(--sp-3); }
   .project-links { gap: var(--sp-4); }
   .footer-inner { flex-direction: column; align-items: flex-start; gap: var(--sp-2); }
 }

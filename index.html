@@ -18,7 +18,7 @@
 <meta property="og:image" content="https://viverun.github.io/assets/og-image.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Jamil Khan, Agentic Developer. A pipeline diagram of security agents feeding an exploitability gate." />
+<meta property="og:image:alt" content="Jamil Khan, Agentic Developer. A diagram of an alignment pipeline: a model's proposed output meets a safety gate that blocks the unsafe paths and passes the rest to human oversight." />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Jamil Khan — Agentic Developer" />
 <meta name="twitter:description" content="Agent systems that decide what's real: an eight-agent security scanner, a VAE fraud engine, and a court-judgment dataset with a citable DOI." />
@@ -32,6 +32,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="assets/style.css" />
+
+<!-- No JS: the canvases can't draw, so hide them and show the written
+     version of every diagram instead. Never a blank box. -->
+<noscript><style>
+  .viz-canvas, .viz-status { display: none; }
+  .graph-fallback[hidden] { display: flex; }
+</style></noscript>
 </head>
 <body>
 
@@ -65,7 +72,7 @@
       <div class="hero-copy">
         <p class="eyebrow">Agentic Developer</p>
         <h1 class="hero-title">I build agent systems that decide what's real.</h1>
-        <p class="hero-sub">Third-year Computer Engineering student in Thane. I work across multi-agent orchestration, anomaly detection, and legal NLP, and I ship what I build: a security scanner running eight specialist agents, a fraud engine built on a variational autoencoder, and a court-judgment dataset with a citable DOI.</p>
+        <p class="hero-sub">I work across multi-agent orchestration, anomaly detection, and legal NLP, and I ship what I build: a security scanner running eight specialist agents, a fraud engine built on a variational autoencoder, and a court-judgment dataset with a citable DOI.</p>
         <div class="hero-actions">
           <a href="#projects" class="btn btn-primary">View projects</a>
           <a href="assets/CV_Jamil_Khan.pdf" class="btn btn-ghost" target="_blank" rel="noopener">Résumé ↗</a>
@@ -87,34 +94,25 @@
         </ul>
       </div>
 
-      <figure class="hero-visual">
-        <p class="hero-visual-label">matrix · scan pipeline</p>
+      <figure class="viz hero-visual">
+        <div class="viz-head">
+          <p class="viz-title">AI safety · alignment pipeline</p>
+          <span class="viz-status" aria-hidden="true">idle</span>
+        </div>
 
-        <canvas id="agentCanvas" role="img"
-                aria-label="Animated diagram of the MATRIX scan pipeline: a target feeds reconnaissance and discovery, which fan out to SQL injection, XSS, authentication and API agents. Their findings converge on an exploitability gate, which rejects one false positive and passes one confirmed finding to the report."></canvas>
+        <canvas class="viz-canvas" data-graph="safety" role="img"
+                aria-label="Animated diagram of an alignment pipeline. Input, an AI model and its tools feed a reasoning step, which produces a proposed output. A policy check and a risk detector report into a safety gate. The gate blocks an unsafe action and a harmful output, and passes the rest to an alignment step, then to human oversight, then to an approved response. Human oversight feeds back into the model."></canvas>
 
-        <!-- Static fallback: shown if the canvas cannot initialise, and inside
-             <noscript> when JS is off. Never a blank box. -->
-        <ol class="graph-fallback" id="graphFallback" hidden>
-          <li><b>Target</b></li>
-          <li><b>Recon</b> <i>secrets, dependencies</i></li>
-          <li><b>Discovery</b> <i>crawl, endpoints, forms</i></li>
-          <li><b>SQLi · XSS · Auth · API</b> <i>+ 4 more agents</i></li>
-          <li><b>Exploitability gate</b> <i>Llama 3.3 70B · rejects false positives</i></li>
-          <li><b>Report</b> <i>CVSS v3.1 · CWE</i></li>
+        <ol class="graph-fallback" hidden>
+          <li><b>Input · model · tools</b> <i>→ reasoning</i></li>
+          <li><b>Proposed output</b> <i>nothing has run yet</i></li>
+          <li><b>Policy check · risk detection</b> <i>report into the gate</i></li>
+          <li><b>Safety gate</b> <i>blocks the unsafe action and the harmful output</i></li>
+          <li><b>Alignment → human oversight</b> <i>and back into the model</i></li>
+          <li><b>Approved response</b></li>
         </ol>
-        <noscript>
-          <ol class="graph-fallback">
-            <li><b>Target</b></li>
-            <li><b>Recon</b> <i>secrets, dependencies</i></li>
-            <li><b>Discovery</b> <i>crawl, endpoints, forms</i></li>
-            <li><b>SQLi · XSS · Auth · API</b> <i>+ 4 more agents</i></li>
-            <li><b>Exploitability gate</b> <i>Llama 3.3 70B · rejects false positives</i></li>
-            <li><b>Report</b> <i>CVSS v3.1 · CWE</i></li>
-          </ol>
-        </noscript>
 
-        <figcaption>The MATRIX pipeline. Agents raise findings; the exploitability gate throws out the ones that can't actually be exploited.</figcaption>
+        <figcaption>The shape all four projects below share: something proposes an action, a gate decides before it runs, and what gets thrown away is the point. Not a product — the pattern.</figcaption>
       </figure>
     </div>
   </section>
@@ -125,13 +123,13 @@
       <div class="about-copy">
         <p class="eyebrow">About</p>
         <h2 class="section-title">The interesting part is usually what gets thrown away.</h2>
-        <p>I'm Jamil, in my third year of Computer Engineering at A.P. Shah Institute of Technology in Thane. Every system I've built has run into the same problem: generating candidates is the easy half, and knowing which ones survive scrutiny is the other one. MATRIX raises potential vulnerabilities and an exploitability gate kills most of them. Sentinel flags anomalous transactions, then a rules layer stops a wealthy customer's television purchase from becoming a fraud alert. JITS pulls citations out of 3,008 judgments and discards every self-citation before the graph is built.</p>
+        <p>I'm Jamil, a Computer Engineering student at A.P. Shah Institute of Technology. Every system I've built has run into the same problem: generating candidates is the easy half, and knowing which ones survive scrutiny is the other one. MATRIX raises potential vulnerabilities and an exploitability gate kills most of them. Sentinel flags anomalous transactions, then a rules layer stops a wealthy customer's television purchase from becoming a fraud alert. JITS pulls citations out of 3,008 judgments and discards every self-citation before the graph is built.</p>
         <p>That's what pulls me toward agent orchestration. LangChain, LangGraph, and MCP interest me less as ways to generate text and more as places to put a system's second opinion.</p>
         <p>Away from the keyboard: chess, and reading about telescopes — a hobby that has produced no useful engineering insight at all, which is exactly why I keep it.</p>
       </div>
 
       <ul class="fact-list">
-        <li><span class="fact-label">Education</span><span class="fact-value">B.E. Computer Engineering, A.P. Shah Institute of Technology (2024–2028)</span></li>
+        <li><span class="fact-label">Education</span><span class="fact-value">B.E. Computer Engineering, A.P. Shah Institute of Technology</span></li>
         <li><span class="fact-label">Focus</span><span class="fact-value">Multi-agent orchestration and evaluation</span></li>
         <li><span class="fact-label">Award</span><span class="fact-value verified">Apify Partner Program Winner, Hack This Fall 2025</span></li>
         <li><span class="fact-label">Award</span><span class="fact-value verified">Hackathon Winner, TechXpression 2025</span></li>
@@ -215,10 +213,8 @@
             <div class="project-links">
               <a href="https://github.com/Viverun/Matrix" target="_blank" rel="noopener">Code ↗</a>
             </div>
-          </div>
 
-          <aside class="project-metrics">
-            <ul>
+            <ul class="metric-grid">
               <li><span class="metric-num">8</span><span class="metric-label">Specialist agents</span></li>
               <li><span class="metric-num">4</span><span class="metric-label">Pipeline phases, recon to report</span></li>
               <li><span class="metric-num">v3.1</span><span class="metric-label">CVSS scoring, CWE mapped</span></li>
@@ -229,6 +225,25 @@
                  finding plus the gate's verdict, e.g. the JSON emitted for a
                  rejected false positive next to a confirmed SQLi. Nothing is
                  rendered until real output exists. -->
+          </div>
+
+          <aside class="project-viz">
+            <figure class="viz">
+              <div class="viz-head">
+                <p class="viz-title">matrix · scan pipeline</p>
+                <span class="viz-status" aria-hidden="true">idle</span>
+              </div>
+              <canvas class="viz-canvas" data-graph="matrix" role="img"
+                      aria-label="Animated diagram of the MATRIX scan pipeline: a target feeds reconnaissance and discovery, which fan out to SQL injection, XSS, authentication and API agents. Their findings converge on an exploitability gate, which rejects one false positive and passes one confirmed finding to the report."></canvas>
+              <ol class="graph-fallback" hidden>
+                <li><b>Target → recon → discovery</b></li>
+                <li><b>SQLi · XSS · auth · API</b> <i>+ 4 more agents</i></li>
+                <li><b>Exploitability gate</b> <i>Llama 3.3 70B</i></li>
+                <li><b>False positive</b> <i>discarded</i></li>
+                <li><b>Report</b> <i>CVSS v3.1 · CWE</i></li>
+              </ol>
+              <figcaption>Agents raise findings; the gate throws out the ones that can't actually be exploited.</figcaption>
+            </figure>
           </aside>
         </article>
 
@@ -251,15 +266,32 @@
               <a href="https://github.com/Viverun/jits-data-pipeline" target="_blank" rel="noopener">Code ↗</a>
               <a href="https://huggingface.co/datasets/Viverun/jits-legal-dataset" target="_blank" rel="noopener">Dataset ↗</a>
             </div>
-          </div>
 
-          <aside class="project-metrics">
-            <ul>
+            <ul class="metric-grid">
               <li><span class="metric-num">3,008</span><span class="metric-label">Judgments processed</span></li>
               <li><span class="metric-num">2,181</span><span class="metric-label">Rows in the public release</span></li>
               <li><span class="metric-num">802,552</span><span class="metric-label">Similarity edges</span></li>
               <li><span class="metric-num">0</span><span class="metric-label">Duplicate IDs, 0 integrity errors</span></li>
             </ul>
+          </div>
+
+          <aside class="project-viz">
+            <figure class="viz">
+              <div class="viz-head">
+                <p class="viz-title">jits · extraction pipeline</p>
+                <span class="viz-status" aria-hidden="true">idle</span>
+              </div>
+              <canvas class="viz-canvas" data-graph="jits" role="img"
+                      aria-label="Animated diagram of the JITS pipeline: a raw corpus is normalised, then metadata, citations and statutory sections are extracted in parallel. A BNS and BNSS guardrail catches judgments that predate the transition, a similarity graph is built, and a release gate holds back 827 unresolved rows while 2,181 pass into train.jsonl."></canvas>
+              <ol class="graph-fallback" hidden>
+                <li><b>Raw corpus → normalise</b></li>
+                <li><b>Metadata · citations · sections</b> <i>self-citations excluded</i></li>
+                <li><b>BNS/BNSS guardrail</b> <i>pre-2024-07-01 judgments held back</i></li>
+                <li><b>Similarity graph</b> <i>802,552 edges</i></li>
+                <li><b>Release gate</b> <i>827 excluded · 2,181 released</i></li>
+              </ol>
+              <figcaption>Every stage is a rule, not a guess. The release gate holds back what it can't resolve to a court and a year.</figcaption>
+            </figure>
           </aside>
         </article>
 
@@ -270,6 +302,29 @@
             <p class="project-tag verified">🏆 Apify Partner Program Winner · Hack This Fall 2025</p>
             <h3>Playlistify AI</h3>
             <p>Reads mood and intent from plain language in four languages, then builds a Spotify playlist through a hybrid recommender with caching and rate limiting. Packaged as an Apify Actor with MCP integration, so an agent can call it as a tool.</p>
+
+            <figure class="viz">
+              <div class="viz-head">
+                <p class="viz-title">playlistify · request path</p>
+                <span class="viz-status" aria-hidden="true">idle</span>
+              </div>
+              <canvas class="viz-canvas" data-graph="playlistify" role="img"
+                      aria-label="Animated diagram of the Playlistify request path: a prompt goes to the intent engine and to agent memory, both feeding the agentic engine, which fans out to the Spotify API, a cache and a rate limiter. Ranked tracks come back and are delivered either as a playlist or through the MCP tool."></canvas>
+              <ol class="graph-fallback" hidden>
+                <li><b>Prompt</b> <i>English, Hindi, Tamil, Telugu</i></li>
+                <li><b>Intent engine + agent memory</b></li>
+                <li><b>Agentic engine</b> <i>Spotify API · cache · rate limit</i></li>
+                <li><b>Ranked tracks</b></li>
+                <li><b>Playlist · MCP tool</b></li>
+              </ol>
+              <figcaption>The only pipeline here with nothing to reject — it ranks rather than judges, and ships as a tool an agent can call.</figcaption>
+            </figure>
+
+            <ul class="metric-grid">
+              <li><span class="metric-num">4</span><span class="metric-label">Languages understood</span></li>
+              <li><span class="metric-num">50+</span><span class="metric-label">Emotional concepts, intent engine</span></li>
+            </ul>
+
             <ul class="tech-chips">
               <li>NLP</li><li>OAuth</li><li>Docker</li><li>MCP</li>
             </ul>
@@ -283,6 +338,29 @@
             <p class="project-tag verified">🏆 Hackathon Winner · TechXpression 2025</p>
             <h3>Sentinel <span class="project-alias">formerly FraudGuard AI</span></h3>
             <p>Real-time fraud detection for banking and UPI transactions. A variational autoencoder catches novel anomalies while a deterministic rules layer handles the known patterns, which keeps rare but legitimate spending from tripping an alert. Built to catch structuring attacks that stay under per-transaction thresholds.</p>
+
+            <figure class="viz">
+              <div class="viz-head">
+                <p class="viz-title">sentinel · decision waterfall</p>
+                <span class="viz-status" aria-hidden="true">idle</span>
+              </div>
+              <canvas class="viz-canvas" data-graph="sentinel" role="img"
+                      aria-label="Animated diagram of the Sentinel waterfall: a transaction passes a velocity trap, which blocks mule activity, then a volume trap, which blocks smurfing, then the variational autoencoder, which blocks anomalies. What survives is either approved or sent to step-up authentication."></canvas>
+              <ol class="graph-fallback" hidden>
+                <li><b>Transaction</b></li>
+                <li><b>Velocity trap</b> <i>blocks mule activity</i></li>
+                <li><b>Volume trap</b> <i>blocks smurfing</i></li>
+                <li><b>VAE</b> <i>blocks novel anomalies</i></li>
+                <li><b>Approved · step-up auth</b></li>
+              </ol>
+              <figcaption>Two cheap deterministic traps run before the VAE ever sees the transaction. Each layer covers the blind spot of the one above it.</figcaption>
+            </figure>
+
+            <ul class="metric-grid">
+              <li><span class="metric-num">3</span><span class="metric-label">Layers, two before the model runs</span></li>
+              <li><span class="metric-num">&lt;1ms</span><span class="metric-label">Velocity block, no model call</span></li>
+            </ul>
+
             <ul class="tech-chips">
               <li>PyTorch</li><li>VAE</li><li>Anomaly detection</li><li>Real-time</li>
             </ul>
