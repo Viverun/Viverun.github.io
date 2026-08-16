@@ -136,7 +136,7 @@
 
   /* dot colour, label colour. Labels run brighter — 11px type needs it. */
   var PAINT = {
-    idle: grey(0.34), done: grey(0.48), killed: grey(0.44),
+    idle: grey(0.40), done: grey(0.50), killed: grey(0.46),
     proc: PROC, flag: FLAG, pass: ACTION, blocked: FLAG
   };
   /* Labels run brighter than their dots — 11px type needs it, and these

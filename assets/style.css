@@ -21,11 +21,14 @@
    grey/violet/rose/cyan, and amber keeps meaning exactly one thing.
    ========================================================= */
 :root {
-  /* --- surfaces --- */
-  --bg:                 #0B0F1F;
-  --surface:            #131A33;
-  --surface-2:          #1A2340;
-  --on-accent:          #0B0F1F;
+  /* --- surfaces ---
+     Near-neutral and genuinely dark. The old navy tinted every accent
+     toward its own hue; on this ground the cyan, amber, violet and rose
+     are the only colour on the page, which is the point. */
+  --bg:                 #0A0B0E;
+  --surface:            #121419;
+  --surface-2:          #1A1D24;
+  --on-accent:          #0A0B0E;
 
   /* --- semantic accents --- */
   --verified:           #F2A754;
@@ -34,20 +37,20 @@
   --action-hi:          #8AEDE5;
 
   /* --- text --- */
-  --text:               #EDEFF7;
-  --text-muted:         #9BA3C4;
-  --text-faint:         #8A93BA;
+  --text:               #F0F1F3;
+  --text-muted:         #A2A5AD;
+  --text-faint:         #8E919B;
 
   /* --- lines --- */
-  --border:             rgba(237, 239, 247, 0.08);
-  --border-strong:      rgba(237, 239, 247, 0.16);
-  --nav-bg:             rgba(11, 15, 31, 0.86);
+  --border:             rgba(240, 241, 243, 0.08);
+  --border-strong:      rgba(240, 241, 243, 0.16);
+  --nav-bg:             rgba(10, 11, 14, 0.86);
 
   /* --- canvas-only channels (rgb triplets for alpha compositing) --- */
   --rgb-action:         95, 224, 214;
   --rgb-proc:           167, 139, 250;   /* #A78BFA — the model, processing */
   --rgb-flag:           238, 116, 128;   /* #EE7480 — risk raised / blocked */
-  --rgb-text:           237, 239, 247;
+  --rgb-text:           240, 241, 243;
 
   /* --- type families --- */
   --font-display:       'Space Grotesk', system-ui, sans-serif;
@@ -377,7 +380,7 @@ button:focus-visible {
   display: flex;
   flex-direction: column;
 }
-:root { --viz-line: rgba(237, 239, 247, 0.028); }
+:root { --viz-line: rgba(240, 241, 243, 0.032); }
 
 .viz-head {
   display: flex;
