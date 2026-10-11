@@ -27,13 +27,12 @@
 <link rel="icon" href="assets/favicon.svg?v=4" type="image/svg+xml" />
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=3" />
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+<!-- self-hosted font (same files as the blog): no third-party request blocking the first paint -->
+<link rel="preload" href="assets/fonts/jetbrains-mono-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 
 <!-- ?v= is bumped whenever the stylesheet changes, so a returning visitor
      never pairs new HTML with a cached old stylesheet. -->
-<link rel="stylesheet" href="assets/style.css?v=16" />
+<link rel="stylesheet" href="assets/style.css?v=17" />
 
 </head>
 <body>
@@ -59,7 +58,11 @@
   <section class="hero" id="top">
     <div class="hero-inner">
       <figure class="hero-art">
-        <img src="assets/jamil-pencil.webp?v=3" width="900" height="911" alt="Pencil sketch of Jamil Khan, looking down" />
+        <img src="assets/jamil-pencil.webp?v=3"
+             srcset="assets/jamil-pencil-360.webp 360w, assets/jamil-pencil-600.webp 600w, assets/jamil-pencil.webp?v=3 900w"
+             sizes="(max-width: 860px) 42vw, 480px"
+             width="900" height="911" fetchpriority="high" decoding="async"
+             alt="Pencil sketch of Jamil Khan, looking down" />
       </figure>
 
       <div class="hero-copy">
