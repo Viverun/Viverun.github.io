@@ -33,7 +33,7 @@
 
 <!-- ?v= is bumped whenever the stylesheet changes, so a returning visitor
      never pairs new HTML with a cached old stylesheet. -->
-<link rel="stylesheet" href="assets/style.css?v=9" />
+<link rel="stylesheet" href="assets/style.css?v=10" />
 
 </head>
 <body>
@@ -50,20 +50,6 @@
       Jamil Khan
     </a>
 
-    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
-
-    <div class="nav-drawer" id="navLinks">
-      <nav class="nav-links" aria-label="Sections">
-        <a href="#projects" data-spy="projects">Projects</a>
-        <a href="#capabilities" data-spy="capabilities">Capabilities</a>
-        <a href="#about" data-spy="about">About</a>
-        <a href="#writing" data-spy="writing">Writing</a>
-        <a href="#contact" data-spy="contact">Contact</a>
-        <a href="assets/CV_Jamil_Khan.pdf" class="nav-resume" target="_blank" rel="noopener">Résumé ↗</a>
-      </nav>
-    </div>
   </div>
 </header>
 
@@ -285,9 +271,9 @@
       <div class="about-copy">
         <p class="eyebrow">03 / About</p>
         <h2 class="section-title">Hi, I'm Jamil.</h2>
-        <p>I study Computer Engineering.</p>
-        <p>The pattern I keep coming back to: generating answers is the easy half. The hard half is deciding which ones to trust. That's what draws me to agent systems, as a place to give software a second opinion.</p>
-        <p>Away from the keyboard: chess, and reading about telescopes.</p>
+        <p>I'm a Computer Engineering student who likes building things that hold up under scrutiny.</p>
+        <p>Most of my work circles one question: when a system hands you an answer, how do you know it's right? Producing answers has become cheap. Checking them, and knowing what to throw away, is where the real thinking happens. That's what draws me to agent systems: they give software room for a second opinion.</p>
+        <p>Away from the keyboard, I play chess and read about telescopes. Both are quiet reminders that seeing clearly takes patience.</p>
       </div>
 
       <ul class="fact-list">
@@ -340,8 +326,18 @@
 
 <footer class="site-footer">
   <div class="section-inner footer-inner">
-    <span>© 2026 Jamil Khan. Built as static files, no framework.</span>
-    <a href="#top">Back to top ↑</a>
+    <nav class="footer-nav" aria-label="Sections">
+      <a href="#projects">Projects</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#about">About</a>
+      <a href="#writing">Writing</a>
+      <a href="#contact">Contact</a>
+      <a href="assets/CV_Jamil_Khan.pdf" class="footer-resume" target="_blank" rel="noopener">Résumé ↗</a>
+    </nav>
+    <div class="footer-meta">
+      <span>© 2026 Jamil Khan. Built as static files, no framework.</span>
+      <a href="#top">Back to top ↑</a>
+    </div>
   </div>
 </footer>
 
@@ -364,6 +360,6 @@
 }
 </script>
 
-<script src="assets/script.js?v=6"></script>
+<script src="assets/script.js?v=7"></script>
 </body>
 </html>
