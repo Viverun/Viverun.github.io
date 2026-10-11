@@ -363,6 +363,11 @@ a.credential-val { text-underline-offset: 4px; }
 }
 
 @media (max-width: 700px) {
+  /* metrics as a clean 2x2 grid: no divider or indent at the start of a row */
+  .metric-grid { grid-template-columns: 1fr 1fr; }
+  .metric-grid li:nth-child(odd) { padding-left: 0; border-left: 0; }
+  .metric-grid li:nth-child(n+3) { border-top: 1px solid var(--rule); }
+
   .nav-toggle { display: flex; }
   .nav-drawer {
     position: absolute; top: 100%; left: 0; right: 0;
