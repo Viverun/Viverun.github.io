@@ -61,7 +61,7 @@ h1, h2, h3, p, figure { margin: 0; }
 }
 
 /* label voice: small, spaced, uppercase */
-.eyebrow, .project-tag, .viz-title, .metric-label, .proof-label,
+.eyebrow, .project-tag, .viz-title, .metric-label,
 .credential-key, .fact-label, .cap-head, .tech-chips li, .site-footer {
   font-size: var(--t-micro);
   font-weight: 500;
@@ -158,22 +158,25 @@ h1, h2, h3, p, figure { margin: 0; }
   font-size: clamp(3.25rem, 9vw, 8rem); font-weight: 800; line-height: 0.92;
   letter-spacing: -0.05em; text-transform: uppercase;
 }
-.hero-sub { max-width: 34ch; font-size: clamp(1rem, 1.7vw, 1.2rem); font-weight: 600; line-height: 1.55; }
+.hero-sub { max-width: 46ch; font-size: clamp(1rem, 1.7vw, 1.2rem); font-weight: 600; line-height: 1.55; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
 
-.proof-bar {
-  display: grid; grid-template-columns: repeat(3, auto); justify-content: start;
-  gap: 1rem clamp(1.5rem, 4vw, 3rem);
-  margin-top: clamp(2rem, 5vw, 3rem);
-}
-.proof-bar li { display: grid; align-content: start; gap: 0.2rem; }
-.proof-num { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; }
-.proof-plus { color: var(--muted); }
 
+/* phones and small tablets: portrait and name side by side, the rest below */
 @media (max-width: 860px) {
-  .hero-inner { grid-template-columns: 1fr; min-height: 0; }
-  .hero-art { max-width: 280px; align-self: start; }
+  .hero-inner {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+    grid-template-areas: "art eyebrow" "art title" "sub sub" "actions actions";
+    column-gap: 1rem; row-gap: 0; align-items: center;
+    min-height: 0;
+  }
+  .hero-copy { display: contents; }
+  .hero-art { grid-area: art; align-self: center; }
   .hero-art img { max-height: none; }
+  .hero .eyebrow { grid-area: eyebrow; align-self: end; font-size: 0.6rem; letter-spacing: 0.12em; }
+  .hero-title { grid-area: title; align-self: start; margin: 0.6rem 0 0; font-size: clamp(2.1rem, 10.5vw, 4.5rem); }
+  .hero-sub { grid-area: sub; margin-top: 1.75rem; max-width: none; }
+  .hero-actions { grid-area: actions; }
 }
 
 /* =========================================================
@@ -385,7 +388,6 @@ a.credential-val { text-underline-offset: 4px; }
   .nav-links a { padding: 0.85rem 0; border-top: 1px solid var(--rule); }
   .nav-links .nav-resume { margin: 0.75rem 0 1rem; text-align: center; }
 
-  .proof-bar { grid-template-columns: 1fr 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -424,3 +426,10 @@ a.credential-val { text-underline-offset: 4px; }
 /* chat-style streaming (script.js), same as the blog */
 .streaming .tok { opacity: 0; }
 .streaming .tok.on { opacity: 1; transition: opacity 0.2s ease-out; }
+
+/* a quiet footnote under the projects */
+.aside-note {
+  margin-top: clamp(2.5rem, 6vw, 4rem); padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+  font-size: var(--t-small); color: var(--muted); font-style: italic;
+}
