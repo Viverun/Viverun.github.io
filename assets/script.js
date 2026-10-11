@@ -62,40 +62,6 @@
 })();
 
 /* =========================================================
-   Scroll reveal — staggered inside each group, total budget
-   held to 240ms so a group lands together rather than trickling
-   ========================================================= */
-(function () {
-  var GROUPS = ['.about-copy, .fact-list', '.cap-list', '.project-card', '.writing-grid > *', '.contact-inner'];
-  var STEP = 70, CAP = 240;
-  var all = [];
-
-  GROUPS.forEach(function (sel) {
-    Array.prototype.slice.call(document.querySelectorAll(sel)).forEach(function (el, i) {
-      el.classList.add('reveal');
-      el.style.setProperty('--reveal-delay', Math.min(i * STEP, CAP) + 'ms');
-      all.push(el);
-    });
-  });
-
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduce || !('IntersectionObserver' in window)) {
-    all.forEach(function (el) { el.classList.add('is-visible'); });
-    return;
-  }
-
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add('is-visible');
-      io.unobserve(entry.target);
-    });
-  }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
-
-  all.forEach(function (el) { io.observe(el); });
-})();
-
-/* =========================================================
    Latest blog entries — read from the journal's own RSS feed,
    so this list updates whenever a post is published there
    ========================================================= */
@@ -138,58 +104,59 @@
 })();
 
 /* =========================================================
-   Chat-style streaming for [data-stream="char" | "word"],
-   the same effect as the blog: text arrives in uneven chunks
-   with the cursor riding the end
+   LLM-style streaming — only for the name.
+   Letters arrive one at a time at an even pace, each fading and
+   sharpening in, with the cursor riding the end of the line.
    ========================================================= */
 (function () {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var blocks = Array.prototype.slice.call(document.querySelectorAll('[data-stream]'));
-  if (!blocks.length) return;
 
-  function tokenize(el, mode) {
-    var out = [];
+  function split(el) {
+    var chars = [];
     var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
     var nodes = [];
     while (walker.nextNode()) if (walker.currentNode.nodeValue.trim()) nodes.push(walker.currentNode);
     nodes.forEach(function (node) {
       var frag = document.createDocumentFragment();
-      var parts = mode === 'char' ? Array.from(node.nodeValue) : node.nodeValue.split(/(\s+)/);
-      parts.forEach(function (part) {
+      node.nodeValue.split(/(\s+)/).forEach(function (part) {
         if (!part) return;
         if (/^\s+$/.test(part)) { frag.append(part); return; }
-        var span = document.createElement('span');
-        span.className = 'tok';
-        span.textContent = part;
-        frag.append(span);
-        out.push(span);
+        var word = document.createElement('span');   // keeps a word from breaking mid-way
+        word.className = 'word';
+        Array.from(part).forEach(function (ch) {
+          var span = document.createElement('span');
+          span.className = 'tok';
+          span.textContent = ch;
+          word.append(span);
+          chars.push(span);
+        });
+        frag.append(word);
       });
       node.replaceWith(frag);
     });
-    return out;
+    return chars;
   }
 
-  var queue = blocks.map(function (el) {
-    return { toks: tokenize(el, el.dataset.stream), own: el.querySelector('.cursor') };
-  });
-  document.documentElement.classList.add('streaming');
-
-  function play(i) {
-    if (i >= queue.length) return;
-    var toks = queue[i].toks, own = queue[i].own;
-    if (!toks.length) return play(i + 1);
-    var cursor = own || Object.assign(document.createElement('span'), { className: 'cursor' });
+  function play(el, step, delay, keepCursor) {
+    var chars = split(el);
+    if (!chars.length) return;
+    el.classList.add('is-streaming');
+    var cursor = el.querySelector('.cursor') || Object.assign(document.createElement('span'), { className: 'cursor' });
     cursor.setAttribute('aria-hidden', 'true');
-    var base = Math.max(1, Math.ceil(toks.length / 120));
-    var n = 0;
-    (function tick() {
-      var end = Math.min(toks.length, n + base + Math.floor(Math.random() * (base + 2)));
-      for (; n < end; n++) toks[n].classList.add('on');
-      toks[n - 1].after(cursor);
-      if (n < toks.length) return setTimeout(tick, 30 + Math.random() * 50);
-      if (!own) cursor.remove();
-      setTimeout(function () { play(i + 1); }, 150);
-    })();
+    cursor.classList.add('is-typing');           // solid while typing, blinks once done
+    chars[0].before(cursor);
+    chars.forEach(function (span, i) {
+      setTimeout(function () {
+        span.classList.add('on');
+        span.after(cursor);
+        if (i === chars.length - 1) {
+          cursor.classList.remove('is-typing');
+          if (!keepCursor) setTimeout(function () { cursor.remove(); }, 900);
+        }
+      }, delay + i * step);
+    });
   }
-  setTimeout(function () { play(0); }, 300);
+
+  document.querySelectorAll('[data-stream="name"]').forEach(function (el) { play(el, 75, 300, true); });
+
 })();

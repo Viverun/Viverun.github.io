@@ -345,15 +345,6 @@ a.credential-val { text-underline-offset: 4px; }
 .footer-inner a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
 
 /* =========================================================
-   Scroll reveal (classes added by script.js)
-   ========================================================= */
-.reveal {
-  opacity: 0; transform: translateY(14px);
-  transition: opacity 0.6s var(--ease) var(--reveal-delay, 0ms), transform 0.6s var(--ease) var(--reveal-delay, 0ms);
-}
-.reveal.is-visible { opacity: 1; transform: none; }
-
-/* =========================================================
    Responsive
    ========================================================= */
 @media (max-width: 940px) {
@@ -393,7 +384,6 @@ a.credential-val { text-underline-offset: 4px; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .cursor, .nav-logo:hover .cursor-bar { animation: none; }
-  .reveal { opacity: 1; transform: none; transition: none; }
 }
 
 /* =========================================================
@@ -423,9 +413,15 @@ a.credential-val { text-underline-offset: 4px; }
   .writing-grid { grid-template-columns: 1fr; }
 }
 
-/* chat-style streaming (script.js), same as the blog */
-.streaming .tok { opacity: 0; }
-.streaming .tok.on { opacity: 1; transition: opacity 0.2s ease-out; }
+/* LLM-style streaming (script.js): each letter fades and sharpens in */
+.word { display: inline-block; white-space: nowrap; }
+.is-streaming .tok {
+  display: inline-block;
+  opacity: 0; filter: blur(6px); transform: translateY(0.12em);
+  transition: opacity 0.45s var(--ease), filter 0.45s var(--ease), transform 0.45s var(--ease);
+}
+.is-streaming .tok.on { opacity: 1; filter: none; transform: none; }
+.cursor.is-typing { animation: none; }
 
 /* a quiet footnote under the projects */
 .aside-note {
