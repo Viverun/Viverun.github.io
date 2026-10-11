@@ -4,9 +4,9 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Jamil Khan — Agentic Developer</title>
-<meta name="description" content="Jamil Khan builds the part that decides: an eight-agent security scanner behind an LLM exploitability gate, a VAE fraud engine, and a court-judgment dataset with a citable DOI." />
+<meta name="description" content="Jamil Khan builds systems that check their own answers: a structured Indian legal dataset with a citable DOI, graph-network physics research, and a hybrid fraud detector." />
 <meta name="author" content="Jamil Khan" />
-<meta name="theme-color" content="#0A0B0E" />
+<meta name="theme-color" content="#f4efe6" />
 <link rel="canonical" href="https://viverun.github.io/" />
 
 <!-- Open Graph / Twitter -->
@@ -14,34 +14,27 @@
 <meta property="og:site_name" content="Jamil Khan" />
 <meta property="og:url" content="https://viverun.github.io/" />
 <meta property="og:title" content="Jamil Khan — Agentic Developer" />
-<meta property="og:description" content="Agent systems that decide what's real: an eight-agent security scanner, a VAE fraud engine, and a court-judgment dataset with a citable DOI." />
+<meta property="og:description" content="Jamil Khan builds systems that check their own answers: a structured Indian legal dataset with a citable DOI, graph-network physics research, and a hybrid fraud detector." />
 <meta property="og:image" content="https://viverun.github.io/assets/og-image.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="Jamil Khan, Agentic Developer. A diagram of an alignment pipeline: a model's proposed output meets a safety gate that blocks the unsafe paths and passes the rest to human oversight." />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Jamil Khan — Agentic Developer" />
-<meta name="twitter:description" content="Agent systems that decide what's real: an eight-agent security scanner, a VAE fraud engine, and a court-judgment dataset with a citable DOI." />
+<meta name="twitter:description" content="Jamil Khan builds systems that check their own answers: a structured Indian legal dataset with a citable DOI, graph-network physics research, and a hybrid fraud detector." />
 <meta name="twitter:image" content="https://viverun.github.io/assets/og-image.png" />
 
-<link rel="icon" href="assets/favicon.svg?v=3" type="image/svg+xml" />
+<link rel="icon" href="assets/favicon.svg?v=4" type="image/svg+xml" />
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=3" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
 
-<!-- ?v= is bumped whenever the palette or the graph engine changes. Without
-     it a returning visitor can pair new HTML with a cached old stylesheet,
-     which is how the navy came back after the repalette. -->
-<link rel="stylesheet" href="assets/style.css?v=3" />
+<!-- ?v= is bumped whenever the stylesheet changes, so a returning visitor
+     never pairs new HTML with a cached old stylesheet. -->
+<link rel="stylesheet" href="assets/style.css?v=4" />
 
-<!-- No JS: the canvases can't draw, so hide them and show the written
-     version of every diagram instead. Never a blank box. -->
-<noscript><style>
-  .viz-canvas, .viz-status { display: none; }
-  .graph-fallback[hidden] { display: flex; }
-</style></noscript>
 </head>
 <body>
 
@@ -49,7 +42,13 @@
 
 <header class="site-nav" id="site-nav">
   <div class="nav-inner">
-    <a href="#top" class="nav-logo">Jamil Khan<span class="nav-logo-dot">.</span></a>
+    <a href="#top" class="nav-logo">
+      <svg class="mark" viewBox="10 12 44 40" aria-hidden="true">
+        <path d="M12 14h9.5L27 40l5.5-26H42L32 50H22z" />
+        <rect class="cursor-bar" x="48" y="12" width="4" height="40" />
+      </svg>
+      Jamil Khan
+    </a>
 
     <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle menu">
       <span></span><span></span><span></span>
@@ -60,8 +59,8 @@
         <a href="#projects" data-spy="projects">Projects</a>
         <a href="#capabilities" data-spy="capabilities">Capabilities</a>
         <a href="#about" data-spy="about">About</a>
+        <a href="#writing" data-spy="writing">Writing</a>
         <a href="#contact" data-spy="contact">Contact</a>
-        <a href="/devlith/">Writing</a>
         <a href="assets/CV_Jamil_Khan.pdf" class="nav-resume" target="_blank" rel="noopener">Résumé ↗</a>
       </nav>
     </div>
@@ -73,228 +72,173 @@
   <!-- ===================================================== HERO -->
   <section class="hero" id="top">
     <div class="hero-inner">
-      <div class="hero-copy">
-        <p class="eyebrow">Agentic Developer</p>
-        <h1 class="hero-title">Anything can generate. I build the part that decides.</h1>
-        <p class="hero-sub">I work across multi-agent orchestration, anomaly detection, and legal NLP, and I ship what I build: a security scanner running eight specialist agents, a fraud engine built on a variational autoencoder, and a court-judgment dataset with a citable DOI.</p>
-        <div class="hero-actions">
-          <a href="#projects" class="btn btn-primary">View projects</a>
-          <a href="assets/CV_Jamil_Khan.pdf" class="btn btn-ghost" target="_blank" rel="noopener">Résumé ↗</a>
-        </div>
-
-        <ul class="proof-bar">
-          <li>
-            <span class="proof-num">1,134<span class="proof-plus">+</span></span>
-            <span class="proof-label">Hugging Face dataset downloads</span>
-          </li>
-          <li>
-            <span class="proof-num">2<span class="proof-plus">×</span></span>
-            <span class="proof-label">Hackathon wins, 2025</span>
-          </li>
-          <li>
-            <span class="proof-num">3,008</span>
-            <span class="proof-label">Judgments in the JITS corpus</span>
-          </li>
-        </ul>
+      <p class="eyebrow">Agentic developer · Computer Engineering student</p>
+      <h1 class="hero-title" data-stream="char">Jamil<br />Khan<span class="cursor" aria-hidden="true"></span></h1>
+      <p class="hero-sub">Anything can generate. I build the part that decides what to trust.</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">See the work</a>
+        <a href="/devlith/" class="btn btn-ghost">Read the journal</a>
       </div>
 
-      <figure class="viz hero-visual">
-        <div class="viz-head">
-          <p class="viz-title">AI safety · alignment pipeline</p>
-          <span class="viz-status" aria-hidden="true">idle</span>
-        </div>
-
-        <canvas class="viz-canvas" data-graph="safety" role="img"
-                aria-label="Animated diagram of an alignment pipeline. Input, an AI model and its tools feed a reasoning step, which produces a proposed output. A policy check and a risk detector report into a safety gate. The gate blocks an unsafe action and a harmful output, and passes the rest to an alignment step, then to human oversight, then to an approved response. Human oversight feeds back into the model."></canvas>
-
-        <ol class="graph-fallback" hidden>
-          <li><b>Input · model · tools</b> <i>→ reasoning</i></li>
-          <li><b>Proposed output</b> <i>nothing has run yet</i></li>
-          <li><b>Policy check · risk detection</b> <i>report into the gate</i></li>
-          <li><b>Safety gate</b> <i>blocks the unsafe action and the harmful output</i></li>
-          <li><b>Alignment → human oversight</b> <i>and back into the model</i></li>
-          <li><b>Approved response</b></li>
-        </ol>
-
-        <figcaption>The shape all four projects below share: something proposes an action, a gate decides before it runs, and what gets thrown away is the point. Not a product — the pattern.</figcaption>
-      </figure>
+      <ul class="proof-bar">
+        <li>
+          <span class="proof-num">1,610<span class="proof-plus">+</span></span>
+          <span class="proof-label">Dataset downloads</span>
+        </li>
+        <li>
+          <span class="proof-num">14,678</span>
+          <span class="proof-label">Court judgments structured</span>
+        </li>
+        <li>
+          <span class="proof-num">2<span class="proof-plus">×</span></span>
+          <span class="proof-label">Hackathon wins, 2025</span>
+        </li>
+      </ul>
     </div>
   </section>
 
   <!-- ===================================================== PROJECTS -->
   <section class="section section-projects" id="projects">
     <div class="section-inner">
-      <p class="eyebrow">Projects</p>
-      <h2 class="section-title">Four systems. The two at the top have the most to show.</h2>
+      <p class="eyebrow">01 / Projects</p>
+      <h2 class="section-title">Selected work</h2>
 
       <div class="project-stack">
 
-        <!-- ---------- MATRIX (featured) ---------- -->
-        <article class="project-card is-featured" id="p-matrix">
-          <div class="project-body">
-            <p class="project-tag">Self-initiated · Security</p>
-            <h3>MATRIX</h3>
-            <p>An autonomous scanner that points eight specialist agents at a web application: SQL injection, XSS, CSRF, SSRF, command injection, authentication, API security, and repository secrets. Each agent works from a shared scan context, so evidence one turns up narrows the search for the others. Findings then reach an intelligence layer where a Llama 3.3 70B pass, confidence scoring, and an exploitability gate downgrade anything that cannot actually be exploited. What survives comes out as a CVSS v3.1 report with CWE mappings. Detection is validated against OWASP's intentionally vulnerable applications, so the numbers come from a known ground truth rather than from the scanner grading itself.</p>
-
-            <ul class="tech-chips">
-              <li>Python</li><li>FastAPI</li><li>Redis Queue</li><li>Next.js</li><li>Multi-agent</li>
-            </ul>
-            <div class="project-links">
-              <a href="https://github.com/Viverun/Matrix" target="_blank" rel="noopener">Code ↗</a>
-            </div>
-
-            <ul class="metric-grid">
-              <li><span class="metric-num">8</span><span class="metric-label">Specialist agents</span></li>
-              <li><span class="metric-num">4</span><span class="metric-label">Pipeline phases, recon to report</span></li>
-              <li><span class="metric-num">v3.1</span><span class="metric-label">CVSS scoring, CWE mapped</span></li>
-              <li><span class="metric-num">70B</span><span class="metric-label">Llama 3.3 validation pass</span></li>
-            </ul>
-            <!-- TODO: replace with real MATRIX scan output.
-                 Drop a <pre class="artifact"> block here holding one genuine
-                 finding plus the gate's verdict, e.g. the JSON emitted for a
-                 rejected false positive next to a confirmed SQLi. Nothing is
-                 rendered until real output exists. -->
-          </div>
-
-          <aside class="project-viz">
-            <figure class="viz">
-              <div class="viz-head">
-                <p class="viz-title">matrix · scan pipeline</p>
-                <span class="viz-status" aria-hidden="true">idle</span>
-              </div>
-              <canvas class="viz-canvas" data-graph="matrix" role="img"
-                      aria-label="Animated diagram of the MATRIX scan pipeline: a target feeds reconnaissance and discovery, which fan out to SQL injection, XSS, authentication and API agents. Their findings converge on an exploitability gate, which rejects one false positive and passes one confirmed finding to the report."></canvas>
-              <ol class="graph-fallback" hidden>
-                <li><b>Target → recon → discovery</b></li>
-                <li><b>SQLi · XSS · auth · API</b> <i>+ 4 more agents</i></li>
-                <li><b>Exploitability gate</b> <i>Llama 3.3 70B</i></li>
-                <li><b>False positive</b> <i>discarded</i></li>
-                <li><b>Report</b> <i>CVSS v3.1 · CWE</i></li>
-              </ol>
-              <figcaption>Agents raise findings; the gate throws out the ones that can't actually be exploited.</figcaption>
-            </figure>
-          </aside>
-        </article>
-
-        <!-- ---------- JITS (featured) ---------- -->
+        <!-- ---------- JITS ---------- -->
         <article class="project-card is-featured" id="p-jits">
           <div class="project-body">
-            <p class="project-tag">Open source · Apache-2.0 · v1.7</p>
-            <h3>JITS</h3>
-            <p>A deterministic pipeline that turns Indian court judgments into structured, queryable legal data. It normalises court names, extracts statutory sections across multiple acts, handles the IPC and CrPC transition to BNS and BNSS with date guardrails, and excludes self-citations before building a similarity graph. Nothing in it is a model guess; every output traces back to an explicit rule.</p>
+            <p class="project-tag">Open source · Legal data · v1.14</p>
+            <h3>JITS Legal</h3>
+            <p>Indian court judgments, turned into clean, searchable data. JITS reads each judgment and pulls out the court, date, cited cases and the laws it invokes, including the 2024 switch from IPC/CrPC to BNS/BNSS.</p>
+            <p>There's no AI guessing involved. Every field comes from a written rule, so running it twice gives exactly the same result.</p>
 
             <ul class="credential-row">
               <li><span class="credential-key">DOI</span><a class="credential-val" href="https://doi.org/10.57967/hf/9847" target="_blank" rel="noopener">10.57967/hf/9847</a></li>
-              <li><span class="credential-key">Downloads</span><span class="credential-val">1,134 all-time</span></li>
+              <li><span class="credential-key">Downloads</span><span class="credential-val">1,610+</span></li>
+            </ul>
+
+            <ul class="metric-grid">
+              <li><span class="metric-num">14,678</span><span class="metric-label">Judgments processed</span></li>
+              <li><span class="metric-num">14,037</span><span class="metric-label">Rows released</span></li>
+              <li><span class="metric-num">0</span><span class="metric-label">Duplicate IDs</span></li>
             </ul>
 
             <ul class="tech-chips">
-              <li>Python</li><li>NLP</li><li>Citation graphs</li><li>Legal tech</li>
+              <li>Python</li><li>NLP</li><li>Citation graphs</li>
             </ul>
             <div class="project-links">
               <a href="https://github.com/Viverun/jits-data-pipeline" target="_blank" rel="noopener">Code ↗</a>
               <a href="https://huggingface.co/datasets/Viverun/jits-legal-dataset" target="_blank" rel="noopener">Dataset ↗</a>
             </div>
-
-            <ul class="metric-grid">
-              <li><span class="metric-num">3,008</span><span class="metric-label">Judgments processed</span></li>
-              <li><span class="metric-num">2,181</span><span class="metric-label">Rows in the public release</span></li>
-              <li><span class="metric-num">802,552</span><span class="metric-label">Similarity edges</span></li>
-              <li><span class="metric-num">0</span><span class="metric-label">Duplicate IDs, 0 integrity errors</span></li>
-            </ul>
           </div>
 
           <aside class="project-viz">
             <figure class="viz">
               <div class="viz-head">
-                <p class="viz-title">jits · extraction pipeline</p>
-                <span class="viz-status" aria-hidden="true">idle</span>
+                <p class="viz-title">How a judgment becomes data</p>
               </div>
-              <canvas class="viz-canvas" data-graph="jits" role="img"
-                      aria-label="Animated diagram of the JITS pipeline: a raw corpus is normalised, then metadata, citations and statutory sections are extracted in parallel. A BNS and BNSS guardrail catches judgments that predate the transition, a similarity graph is built, and a release gate holds back 827 unresolved rows while 2,181 pass into train.jsonl."></canvas>
-              <ol class="graph-fallback" hidden>
-                <li><b>Raw corpus → normalise</b></li>
-                <li><b>Metadata · citations · sections</b> <i>self-citations excluded</i></li>
-                <li><b>BNS/BNSS guardrail</b> <i>pre-2024-07-01 judgments held back</i></li>
-                <li><b>Similarity graph</b> <i>802,552 edges</i></li>
-                <li><b>Release gate</b> <i>827 excluded · 2,181 released</i></li>
+              <ol class="pipeline">
+                <li><b>Read the judgment</b> <i>raw text from the court</i></li>
+                <li><b>Extract</b> <i>court, date, citations, sections</i></li>
+                <li><b>Map old law to new</b> <i>IPC → BNS, only where the date allows</i></li>
+                <li class="cut"><b>Hold back</b> <i>641 with no clear court or year</i></li>
+                <li><b>Release</b> <i>14,037 rows on Hugging Face</i></li>
               </ol>
-              <figcaption>Every stage is a rule, not a guess. The release gate holds back what it can't resolve to a court and a year.</figcaption>
             </figure>
           </aside>
         </article>
 
-        <!-- ---------- Two hackathon builds ---------- -->
-        <div class="project-pair">
-
-          <article class="project-card" id="p-playlistify">
-            <p class="project-tag verified">🏆 Apify Partner Program Winner · Hack This Fall 2025</p>
-            <h3>Playlistify AI</h3>
-            <p>Reads mood and intent from plain language in four languages, then builds a Spotify playlist through a hybrid recommender with caching and rate limiting. Packaged as an Apify Actor with MCP integration, so an agent can call it as a tool.</p>
-
-            <figure class="viz">
-              <div class="viz-head">
-                <p class="viz-title">playlistify · request path</p>
-                <span class="viz-status" aria-hidden="true">idle</span>
-              </div>
-              <canvas class="viz-canvas" data-graph="playlistify" role="img"
-                      aria-label="Animated diagram of the Playlistify request path: a prompt goes to the intent engine and to agent memory, both feeding the agentic engine, which fans out to the Spotify API, a cache and a rate limiter. Ranked tracks come back and are delivered either as a playlist or through the MCP tool."></canvas>
-              <ol class="graph-fallback" hidden>
-                <li><b>Prompt</b> <i>English, Hindi, Tamil, Telugu</i></li>
-                <li><b>Intent engine + agent memory</b></li>
-                <li><b>Agentic engine</b> <i>Spotify API · cache · rate limit</i></li>
-                <li><b>Ranked tracks</b></li>
-                <li><b>Playlist · MCP tool</b></li>
-              </ol>
-              <figcaption>The only pipeline here with nothing to reject — it ranks rather than judges, and ships as a tool an agent can call.</figcaption>
-            </figure>
+        <!-- ---------- Hidden Vertex ---------- -->
+        <article class="project-card is-featured" id="p-hidden-vertex">
+          <div class="project-body">
+            <p class="project-tag">Research · Particle physics</p>
+            <h3>Hidden Vertex</h3>
+            <p>The Large Hadron Collider throws away almost all of its collision data, keeping only events that match what physicists expect to see. Anything truly new could be lost.</p>
+            <p>Hidden Vertex trains a graph neural network on ordinary collisions only, so anything it can't explain stands out. Part 1 showed that looking at particles one by one isn't enough to spot new physics, which sets up Part 2.</p>
 
             <ul class="metric-grid">
-              <li><span class="metric-num">4</span><span class="metric-label">Languages understood</span></li>
-              <li><span class="metric-num">50+</span><span class="metric-label">Emotional concepts, intent engine</span></li>
+              <li><span class="metric-num">1.1M</span><span class="metric-label">Collision events</span></li>
+              <li><span class="metric-num">429</span><span class="metric-label">Model parameters</span></li>
+              <li><span class="metric-num">Part 1</span><span class="metric-label">Complete</span></li>
             </ul>
 
             <ul class="tech-chips">
-              <li>NLP</li><li>OAuth</li><li>Docker</li><li>MCP</li>
+              <li>PyTorch Geometric</li><li>Graph networks</li><li>Anomaly detection</li>
             </ul>
             <div class="project-links">
-              <a href="https://github.com/avanishkasar/Playlistify-AI" target="_blank" rel="noopener">Code ↗</a>
-              <a href="https://apify.com/avanishkasar/playlistify-ai" target="_blank" rel="noopener">Apify Actor ↗</a>
+              <a href="https://github.com/Viverun/Hidden-Vertex" target="_blank" rel="noopener">Code ↗</a>
+              <a href="https://www.kaggle.com/datasets/viveriun/lhc-collider" target="_blank" rel="noopener">Dataset ↗</a>
             </div>
-          </article>
+          </div>
+
+          <aside class="project-viz">
+            <figure class="viz">
+              <div class="viz-head">
+                <p class="viz-title">Searching without knowing what for</p>
+              </div>
+              <ol class="pipeline">
+                <li><b>Collision</b> <i>each particle becomes a node</i></li>
+                <li><b>Graph</b> <i>nearby particles are connected</i></li>
+                <li><b>Learn the normal</b> <i>trained on ordinary events only</i></li>
+                <li class="cut"><b>Particle by particle</b> <i>no better than chance</i></li>
+                <li><b>Next: the whole event</b> <i>Part 2</i></li>
+              </ol>
+            </figure>
+          </aside>
+        </article>
+
+        <!-- ---------- Two hackathon wins ---------- -->
+        <div class="project-pair">
 
           <article class="project-card" id="p-sentinel">
-            <p class="project-tag verified">🏆 Hackathon Winner · TechXpression 2025</p>
-            <h3>Sentinel <span class="project-alias">formerly FraudGuard AI</span></h3>
-            <p>Real-time fraud detection for banking and UPI transactions. A variational autoencoder catches novel anomalies while a deterministic rules layer handles the known patterns, which keeps rare but legitimate spending from tripping an alert. Built to catch structuring attacks that stay under per-transaction thresholds.</p>
+            <p class="project-tag verified">Winner · TechXpression 2025</p>
+            <h3>Sentinel</h3>
+            <p>Real-time fraud detection for UPI and bank payments. Two fast rule checks catch the obvious attacks first; a neural network only looks at what gets past them. That keeps a rare but genuine purchase from being flagged as fraud.</p>
 
             <figure class="viz">
               <div class="viz-head">
-                <p class="viz-title">sentinel · decision waterfall</p>
-                <span class="viz-status" aria-hidden="true">idle</span>
+                <p class="viz-title">Every payment, three checks</p>
               </div>
-              <canvas class="viz-canvas" data-graph="sentinel" role="img"
-                      aria-label="Animated diagram of the Sentinel waterfall: a transaction passes a velocity trap, which blocks mule activity, then a volume trap, which blocks smurfing, then the variational autoencoder, which blocks anomalies. What survives is either approved or sent to step-up authentication."></canvas>
-              <ol class="graph-fallback" hidden>
-                <li><b>Transaction</b></li>
-                <li><b>Velocity trap</b> <i>blocks mule activity</i></li>
-                <li><b>Volume trap</b> <i>blocks smurfing</i></li>
-                <li><b>VAE</b> <i>blocks novel anomalies</i></li>
-                <li><b>Approved · step-up auth</b></li>
+              <ol class="pipeline">
+                <li><b>Too fast?</b> <i>blocks money mules in under 1 ms</i></li>
+                <li><b>Too much?</b> <i>blocks split-up transfers</i></li>
+                <li><b>Too unusual?</b> <i>the neural network decides</i></li>
+                <li><b>Approve or verify</b></li>
               </ol>
-              <figcaption>Two cheap deterministic traps run before the VAE ever sees the transaction. Each layer covers the blind spot of the one above it.</figcaption>
             </figure>
 
-            <ul class="metric-grid">
-              <li><span class="metric-num">3</span><span class="metric-label">Layers, two before the model runs</span></li>
-              <li><span class="metric-num">&lt;1ms</span><span class="metric-label">Velocity block, no model call</span></li>
-            </ul>
-
             <ul class="tech-chips">
-              <li>PyTorch</li><li>VAE</li><li>Anomaly detection</li><li>Real-time</li>
+              <li>TensorFlow</li><li>VAE</li><li>Real-time</li>
             </ul>
             <div class="project-links">
               <a href="https://github.com/Viverun/Sentinel-Fraud-Detection" target="_blank" rel="noopener">Code ↗</a>
+            </div>
+          </article>
+
+          <article class="project-card" id="p-playlistify">
+            <p class="project-tag verified">Winner · Apify Partner Program, Hack This Fall 2025</p>
+            <h3>Playlistify AI</h3>
+            <p>Describe a mood in English, Hindi, Tamil or Telugu, and get a Spotify playlist that fits. It's packaged as a tool other AI agents can call directly.</p>
+
+            <figure class="viz">
+              <div class="viz-head">
+                <p class="viz-title">From a sentence to a playlist</p>
+              </div>
+              <ol class="pipeline">
+                <li><b>Your words</b> <i>in four languages</i></li>
+                <li><b>Read the mood</b> <i>50+ emotional concepts</i></li>
+                <li><b>Rank tracks</b> <i>via the Spotify API</i></li>
+                <li><b>Playlist</b></li>
+              </ol>
+            </figure>
+
+            <ul class="tech-chips">
+              <li>NLP</li><li>MCP</li><li>Docker</li>
+            </ul>
+            <div class="project-links">
+              <a href="https://github.com/avanishkasar/Playlistify-AI" target="_blank" rel="noopener">Code ↗</a>
+              <a href="https://apify.com/avanishkasar/playlistify-ai" target="_blank" rel="noopener">Try it ↗</a>
             </div>
           </article>
 
@@ -306,52 +250,37 @@
   <!-- ===================================================== CAPABILITIES -->
   <section class="section section-tight section-alt" id="capabilities">
     <div class="section-inner">
-      <p class="eyebrow">Capabilities</p>
-      <h2 class="section-title">Every claim here points at the thing that proves it.</h2>
+      <p class="eyebrow">02 / Capabilities</p>
+      <h2 class="section-title">What I work with, and where to see it</h2>
 
       <ul class="cap-list">
         <li class="cap-head" aria-hidden="true">
-          <span>Capability</span><span>How I've used it</span><span>Proof</span>
+          <span>Skill</span><span>Where I've used it</span><span>Proof</span>
         </li>
         <li>
-          <span class="cap-name">Agent orchestration</span>
-          <span class="cap-what">Eight specialist agents working from one shared scan context</span>
-          <a class="cap-proof" href="#p-matrix">MATRIX</a>
-        </li>
-        <li>
-          <span class="cap-name">LLM in the loop</span>
-          <span class="cap-what">Llama 3.3 70B on Groq scoring findings behind an exploitability gate</span>
-          <a class="cap-proof" href="#p-matrix">MATRIX</a>
-        </li>
-        <li>
-          <span class="cap-name">MCP</span>
-          <span class="cap-what">Shipped as an Apify Actor an agent can call as a tool</span>
-          <a class="cap-proof" href="#p-playlistify">Playlistify AI</a>
-        </li>
-        <li>
-          <span class="cap-name">Deep learning</span>
-          <span class="cap-what">Variational autoencoder for anomalies in heavily imbalanced data</span>
-          <a class="cap-proof" href="#p-sentinel">Sentinel</a>
-        </li>
-        <li>
-          <span class="cap-name">NLP pipelines</span>
-          <span class="cap-what">Deterministic extraction across 3,008 judgments and 802,552 similarity edges</span>
+          <span class="cap-name">Rule-based NLP</span>
+          <span class="cap-what">Extracting citations and laws from 14,678 judgments</span>
           <a class="cap-proof" href="#p-jits">JITS</a>
         </li>
         <li>
-          <span class="cap-name">Async services</span>
-          <span class="cap-what">FastAPI with Redis Queue workers and concurrent HTTP</span>
-          <a class="cap-proof" href="#p-matrix">MATRIX</a>
+          <span class="cap-name">Graph neural networks</span>
+          <span class="cap-what">Collisions as graphs, anomaly detection without labels</span>
+          <a class="cap-proof" href="#p-hidden-vertex">Hidden Vertex</a>
         </li>
         <li>
-          <span class="cap-name">Data &amp; caching</span>
-          <span class="cap-what">PostgreSQL and SQLite, Redis caching, rate limiting, OAuth</span>
-          <a class="cap-proof" href="#p-playlistify">Playlistify AI</a>
+          <span class="cap-name">Deep learning</span>
+          <span class="cap-what">A variational autoencoder for rare-event detection</span>
+          <a class="cap-proof" href="#p-sentinel">Sentinel</a>
         </li>
         <li>
-          <span class="cap-name">Containers &amp; deploy</span>
-          <span class="cap-what">Docker Compose for local stacks, static and PaaS deploys</span>
-          <a class="cap-proof" href="#p-matrix">MATRIX</a>
+          <span class="cap-name">Agents &amp; MCP</span>
+          <span class="cap-what">A tool other AI agents can call</span>
+          <a class="cap-proof" href="#p-playlistify">Playlistify</a>
+        </li>
+        <li>
+          <span class="cap-name">Open data</span>
+          <span class="cap-what">A public dataset with a citable DOI</span>
+          <a class="cap-proof" href="#p-jits">JITS</a>
         </li>
       </ul>
     </div>
@@ -361,36 +290,55 @@
   <section class="section section-wide" id="about">
     <div class="section-inner about-grid">
       <div class="about-copy">
-        <p class="eyebrow">About</p>
-        <h2 class="section-title">The interesting part is usually what gets thrown away.</h2>
-        <p>I'm Jamil, a Computer Engineering student at A.P. Shah Institute of Technology. Every system I've built has run into the same problem: generating candidates is the easy half, and knowing which ones survive scrutiny is the other one. MATRIX raises potential vulnerabilities and an exploitability gate kills most of them. Sentinel flags anomalous transactions, then a rules layer stops a wealthy customer's television purchase from becoming a fraud alert. JITS pulls citations out of 3,008 judgments and discards every self-citation before the graph is built.</p>
-        <p>That's what pulls me toward agent orchestration. LangChain, LangGraph, and MCP interest me less as ways to generate text and more as places to put a system's second opinion.</p>
-        <p>Away from the keyboard: chess, and reading about telescopes — a hobby that has produced no useful engineering insight at all, which is exactly why I keep it.</p>
+        <p class="eyebrow">03 / About</p>
+        <h2 class="section-title">Hi, I'm Jamil.</h2>
+        <p>I study Computer Engineering at A.P. Shah Institute of Technology.</p>
+        <p>The pattern I keep coming back to: generating answers is the easy half. The hard half is deciding which ones to trust. That's what draws me to agent systems, as a place to give software a second opinion.</p>
+        <p>Away from the keyboard: chess, and reading about telescopes.</p>
       </div>
 
       <ul class="fact-list">
-        <li><span class="fact-label">Education</span><span class="fact-value">B.E. Computer Engineering, A.P. Shah Institute of Technology</span></li>
-        <li><span class="fact-label">Focus</span><span class="fact-value">Multi-agent orchestration and evaluation</span></li>
-        <li><span class="fact-label">Award</span><span class="fact-value verified">Apify Partner Program Winner, Hack This Fall 2025</span></li>
-        <li><span class="fact-label">Award</span><span class="fact-value verified">Hackathon Winner, TechXpression 2025</span></li>
-        <li><span class="fact-label">Elsewhere</span><span class="fact-value"><a href="https://github.com/Viverun" target="_blank" rel="noopener">github.com/Viverun</a> · <a href="https://huggingface.co/Viverun" target="_blank" rel="noopener">huggingface.co/Viverun</a> · <a href="/devlith/">Writing (blog)</a></span></li>
+        <li><span class="fact-label">Studying</span><span class="fact-value">B.E. Computer Engineering</span></li>
+        <li><span class="fact-label">Focus</span><span class="fact-value">Agent systems and evaluation</span></li>
+        <li><span class="fact-label">Award</span><span class="fact-value verified">Hack This Fall 2025, Apify winner</span></li>
+        <li><span class="fact-label">Award</span><span class="fact-value verified">TechXpression 2025, winner</span></li>
+        <li><span class="fact-label">Elsewhere</span><span class="fact-value"><a href="https://github.com/Viverun" target="_blank" rel="noopener">GitHub</a> · <a href="https://huggingface.co/Viverun" target="_blank" rel="noopener">Hugging Face</a> · <a href="/devlith/">Journal</a></span></li>
       </ul>
     </div>
   </section>
 
+  <!-- ===================================================== WRITING -->
+  <section class="section section-wide section-alt" id="writing">
+    <div class="section-inner writing-grid">
+      <div>
+        <p class="eyebrow">04 / Writing</p>
+        <h2 class="section-title">I also write to think.</h2>
+        <p class="writing-sub">Devlith is my journal: what I'm building, what I'm learning, and what I'm thinking along the way.</p>
+        <a href="/devlith/" class="btn btn-primary">Read the journal →</a>
+      </div>
+
+      <div class="post-list">
+        <p class="post-list-head">Latest entries</p>
+        <!-- Filled from /devlith/rss.xml by script.js; this link stays if the feed can't load. -->
+        <ol id="latestPosts">
+          <li><a href="/devlith/writing/">All entries →</a></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
   <!-- ===================================================== CONTACT -->
-  <section class="section section-tight section-alt" id="contact">
+  <section class="section section-tight" id="contact">
     <div class="section-inner contact-inner">
-      <p class="eyebrow">Contact</p>
-      <h2 class="contact-title">Open to agentic AI internships, starting now.</h2>
-      <p class="contact-sub">Email is the fastest way through. I read everything and reply to anything specific.</p>
+      <p class="eyebrow">05 / Contact</p>
+      <h2 class="contact-title">Open to agentic AI internships.</h2>
+      <p class="contact-sub">Email is fastest. I reply to anything specific.</p>
 
       <div class="contact-links">
         <a href="mailto:khanjamilahmed202@gmail.com" class="btn btn-primary">khanjamilahmed202@gmail.com</a>
         <a href="https://www.linkedin.com/in/jamil-khan-55a621346/" class="btn btn-ghost" target="_blank" rel="noopener">LinkedIn ↗</a>
         <a href="https://github.com/Viverun" class="btn btn-ghost" target="_blank" rel="noopener">GitHub ↗</a>
-        <a href="https://huggingface.co/Viverun" class="btn btn-ghost" target="_blank" rel="noopener">Hugging Face ↗</a>
-        <a href="/devlith/" class="btn btn-ghost">Blog</a>
+        <a href="assets/CV_Jamil_Khan.pdf" class="btn btn-ghost" target="_blank" rel="noopener">Résumé ↗</a>
       </div>
     </div>
   </section>
@@ -424,6 +372,6 @@
 }
 </script>
 
-<script src="assets/script.js?v=3"></script>
+<script src="assets/script.js?v=4"></script>
 </body>
 </html>
