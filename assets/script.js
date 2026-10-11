@@ -21,7 +21,7 @@
         a.className = 'post';
         var meta = document.createElement('span');
         meta.className = 'post-meta';
-        meta.textContent = [text('category'), isNaN(date) ? '' : date.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })].filter(Boolean).join(' · ');
+        meta.textContent = [text('category'), isNaN(date) ? '' : [String(date.getUTCDate()).padStart(2, '0'), 'JAN FEB MAR APR MAY JUN JUL AUG SEP OCT NOV DEC'.split(' ')[date.getUTCMonth()], date.getUTCFullYear()].join(' ')].filter(Boolean).join(' · ');
         var title = document.createElement('span');
         title.className = 'post-title';
         title.textContent = text('title');
