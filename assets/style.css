@@ -434,3 +434,11 @@ a.credential-val { text-underline-offset: 4px; }
   border-top: 1px solid var(--rule);
   font-size: var(--t-small); color: var(--muted); font-style: italic;
 }
+
+/* colour emoji, never the monochrome text glyph */
+.emoji {
+  font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', 'Twemoji Mozilla', sans-serif;
+  font-variant-emoji: emoji;
+  letter-spacing: 0;
+  font-size: 1.5em; line-height: 1; vertical-align: -0.12em; margin-right: 0.15em;
+}
