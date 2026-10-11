@@ -210,6 +210,9 @@ h1, h2, h3, p, figure { margin: 0; }
    Sections
    ========================================================= */
 .section { padding-block: var(--pad); border-bottom: 1px solid var(--ink); }
+/* in-page links land on the section label, not on its empty top padding
+   (the sticky header is ~4.25rem tall; leave a little air below it) */
+.section { scroll-margin-top: calc(1.25rem - var(--pad)); }
 .section-alt { background: var(--paper-deep); }
 
 .eyebrow {
