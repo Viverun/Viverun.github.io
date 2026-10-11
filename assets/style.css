@@ -149,8 +149,8 @@ h1, h2, h3, p, figure { margin: 0; }
   min-height: calc(100svh - 4.25rem);
   padding-block: clamp(2.5rem, 6vw, 4rem);
 }
-.hero-art { margin: 0; align-self: end; }
-.hero-art img { display: block; width: 100%; height: auto; max-height: calc(100svh - 9rem); object-fit: contain; object-position: bottom left; }
+.hero-art { margin: 0; align-self: center; }
+.hero-art img { display: block; width: 100%; height: auto; max-height: calc(100svh - 8rem); object-fit: contain; object-position: center; }
 
 .hero .eyebrow { padding: 0; border: 0; color: var(--muted); }
 .hero-title {
