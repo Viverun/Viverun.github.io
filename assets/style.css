@@ -162,12 +162,11 @@ h1, h2, h3, p, figure { margin: 0; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
 
 .proof-bar {
-  display: grid; grid-template-columns: repeat(3, 1fr);
+  display: grid; grid-template-columns: repeat(3, auto); justify-content: start;
+  gap: 1rem clamp(1.5rem, 4vw, 3rem);
   margin-top: clamp(2rem, 5vw, 3rem);
-  border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink);
 }
-.proof-bar li { display: grid; align-content: start; gap: 0.2rem; padding: 0.85rem 1rem 0.95rem 0; }
-.proof-bar li + li { padding-left: 1rem; border-left: 1px solid var(--rule); }
+.proof-bar li { display: grid; align-content: start; gap: 0.2rem; }
 .proof-num { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; }
 .proof-plus { color: var(--muted); }
 
@@ -386,8 +385,7 @@ a.credential-val { text-underline-offset: 4px; }
   .nav-links a { padding: 0.85rem 0; border-top: 1px solid var(--rule); }
   .nav-links .nav-resume { margin: 0.75rem 0 1rem; text-align: center; }
 
-  .proof-bar { grid-template-columns: 1fr; }
-  .proof-bar li + li { padding-left: 0; border-left: 0; border-top: 1px solid var(--rule); }
+  .proof-bar { grid-template-columns: 1fr 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {
