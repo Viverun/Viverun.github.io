@@ -320,19 +320,15 @@ a.credential-val { text-underline-offset: 4px; }
    Footer
    ========================================================= */
 .site-footer { padding-block: 2rem 2.5rem; }
-.footer-inner { display: grid; gap: 1.5rem; }
+.footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem 2rem; }
 .footer-nav {
   display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem clamp(1rem, 3vw, 2rem);
-  padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule);
 }
 .footer-nav a {
   font-size: var(--t-micro); font-weight: 600; letter-spacing: 0.14em;
   text-transform: uppercase; text-decoration: none; color: var(--ink);
 }
 .footer-nav a:hover { text-decoration: underline; text-underline-offset: 5px; }
-.footer-nav .footer-resume { padding: 0.4rem 0.75rem; border: 1px solid var(--ink); }
-.footer-nav .footer-resume:hover { background: var(--ink); color: var(--paper); text-decoration: none; }
-.footer-meta { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
 .footer-meta a { text-decoration: none; }
 .footer-meta a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
 
