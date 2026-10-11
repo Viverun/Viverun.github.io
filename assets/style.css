@@ -418,3 +418,11 @@ a.credential-val { text-underline-offset: 4px; }
   vertical-align: -0.38em;
   fill: none; stroke: var(--ink); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round;
 }
+
+/* hero primary button: "See the work" on wide screens, "About me" on phones
+   (where the projects are already right below) */
+.only-narrow { display: none; }
+@media (max-width: 860px) {
+  .only-wide { display: none; }
+  .only-narrow { display: inline-block; }
+}
