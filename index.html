@@ -100,7 +100,7 @@
 
             <ul class="metric-grid">
               <li><span class="metric-num">14,678</span><span class="metric-label">Judgments processed</span></li>
-              <li><span class="metric-num">1,500+</span><span class="metric-label">Hugging Face downloads</span></li>
+              <li><span class="metric-num">1,600+</span><span class="metric-label">Hugging Face downloads</span></li>
               <li><span class="metric-num">18.97M</span><span class="metric-label">Similarity edges</span></li>
               <li><span class="metric-num">0</span><span class="metric-label">Duplicate IDs</span></li>
             </ul>
@@ -136,12 +136,16 @@
             <p class="project-tag">Research · Particle physics</p>
             <h3>Hidden Vertex</h3>
             <p>The Large Hadron Collider throws away almost all of its collision data, keeping only events that match what physicists expect to see. Anything truly new could be lost.</p>
-            <p>Hidden Vertex trains a graph neural network on ordinary collisions only, so anything it can't explain stands out. Part 1 showed that looking at particles one by one isn't enough to spot new physics, which sets up Part 2.</p>
+            <p>Hidden Vertex trains graph autoencoders on ordinary collisions only, so anything they can't explain stands out. Two parts in, the result is negative. Part 2's pass mark was set before the results, and the model missed it: 0.40–0.44 AUC, below the 0.5 of pure chance, while one simple variable, average transverse momentum per particle, reached 0.811. Part 3, a jet-aware model, is next.</p>
+
+            <ul class="credential-row">
+              <li><span class="credential-key">DOI</span><a class="credential-val" href="https://doi.org/10.5281/zenodo.23432779" target="_blank" rel="noopener">10.5281/zenodo.23432779</a></li>
+            </ul>
 
             <ul class="metric-grid">
               <li><span class="metric-num">1.1M</span><span class="metric-label">Collision events</span></li>
-              <li><span class="metric-num">429</span><span class="metric-label">Model parameters</span></li>
-              <li><span class="metric-num">Part 1</span><span class="metric-label">Complete</span></li>
+              <li><span class="metric-num">0.44</span><span class="metric-label">Part 2 best AUC</span></li>
+              <li><span class="metric-num">0.811</span><span class="metric-label">Simple baseline AUC</span></li>
             </ul>
 
             <ul class="tech-chips">
@@ -150,6 +154,7 @@
             <div class="project-links">
               <a href="https://github.com/Viverun/Hidden-Vertex" target="_blank" rel="noopener">Code ↗</a>
               <a href="https://www.kaggle.com/datasets/viveriun/lhc-collider" target="_blank" rel="noopener">Dataset ↗</a>
+              <a href="https://huggingface.co/Viverun/lhco-rnd-event-gae" target="_blank" rel="noopener">Models ↗</a>
             </div>
           </div>
 
@@ -159,11 +164,11 @@
                 <p class="viz-title">Searching without knowing what for</p>
               </div>
               <ol class="pipeline">
-                <li><b>Collision</b> <i>each particle becomes a node</i></li>
-                <li><b>Graph</b> <i>nearby particles are connected</i></li>
+                <li><b>Collision to graph</b> <i>nearby particles are connected</i></li>
                 <li><b>Learn the normal</b> <i>trained on ordinary events only</i></li>
-                <li class="cut"><b>Particle by particle</b> <i>no better than chance</i></li>
-                <li><b>Next: the whole event</b> <i>Part 2</i></li>
+                <li class="cut"><b>Part 1: particle by particle</b> <i>no better than chance</i></li>
+                <li class="cut"><b>Part 2: the whole event</b> <i>worse than chance</i></li>
+                <li><b>Next: jets</b> <i>Part 3</i></li>
               </ol>
             </figure>
           </aside>
