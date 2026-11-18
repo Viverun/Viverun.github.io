@@ -100,7 +100,7 @@
 
             <ul class="metric-grid">
               <li><span class="metric-num">14,678</span><span class="metric-label">Judgments processed</span></li>
-              <li><span class="metric-num">1,600+</span><span class="metric-label">Hugging Face downloads</span></li>
+              <li><span class="metric-num">1,700+</span><span class="metric-label">Hugging Face downloads</span></li>
               <li><span class="metric-num">18.97M</span><span class="metric-label">Similarity edges</span></li>
               <li><span class="metric-num">0</span><span class="metric-label">Duplicate IDs</span></li>
             </ul>
@@ -136,7 +136,7 @@
             <p class="project-tag">Research · Particle physics</p>
             <h3>Hidden Vertex</h3>
             <p>The Large Hadron Collider throws away almost all of its collision data, keeping only events that match what physicists expect to see. Anything truly new could be lost.</p>
-            <p>Hidden Vertex trains graph autoencoders on ordinary collisions only, so anything they can't explain stands out. Two parts in, the result is negative. Part 2's pass mark was set before the results, and the model missed it: 0.40–0.44 AUC, below the 0.5 of pure chance, while one simple variable, average transverse momentum per particle, reached 0.811. Part 3, a jet-aware model, is next.</p>
+            <p>Hidden Vertex trains models on ordinary collisions only, so anything they can't explain stands out. Three parts in, the result is still negative, and every pass mark was set before the results. Part 2's graph autoencoder scored 0.40–0.44 AUC, worse than chance. Part 3 tried jet-level features, a Wasserstein-normalised autoencoder and a weakly supervised bump hunt: the best reached 0.76. One simple variable, average transverse momentum per particle, still scores 0.811.</p>
 
             <ul class="credential-row">
               <li><span class="credential-key">DOI</span><a class="credential-val" href="https://doi.org/10.5281/zenodo.23432779" target="_blank" rel="noopener">10.5281/zenodo.23432779</a></li>
@@ -144,7 +144,7 @@
 
             <ul class="metric-grid">
               <li><span class="metric-num">1.1M</span><span class="metric-label">Collision events</span></li>
-              <li><span class="metric-num">0.44</span><span class="metric-label">Part 2 best AUC</span></li>
+              <li><span class="metric-num">0.76</span><span class="metric-label">Best learned AUC</span></li>
               <li><span class="metric-num">0.811</span><span class="metric-label">Simple baseline AUC</span></li>
             </ul>
 
@@ -168,7 +168,8 @@
                 <li><b>Learn the normal</b> <i>trained on ordinary events only</i></li>
                 <li class="cut"><b>Part 1: particle by particle</b> <i>no better than chance</i></li>
                 <li class="cut"><b>Part 2: the whole event</b> <i>worse than chance</i></li>
-                <li><b>Next: jets</b> <i>Part 3</i></li>
+                <li class="cut"><b>Part 3: jets, WNAE, bump hunt</b> <i>best 0.76, still below 0.811</i></li>
+                <li><b>Result: a benchmark</b> <i>public baselines, citable DOI</i></li>
               </ol>
             </figure>
           </aside>
