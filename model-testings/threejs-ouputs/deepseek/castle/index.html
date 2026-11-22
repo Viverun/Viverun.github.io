@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Castle — DeepSeek V4.1 Flash · Three.js Outputs</title>
+<meta name="description" content="A moated medieval castle rendered in Three.js, built by DeepSeek V4.1 Flash from a single prompt. Drag to orbit, scroll to zoom." />
+<link rel="canonical" href="https://viverun.dev/model-testings/threejs-ouputs/deepseek/castle/" />
+<meta property="og:title" content="Castle — DeepSeek V4.1 Flash" />
+<meta property="og:description" content="A moated medieval castle in Three.js, built from code alone." />
+<meta property="og:image" content="https://viverun.dev/model-testings/threejs-ouputs/assets/deepseek-castle.jpg" />
+<meta property="og:type" content="website" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23101518'/%3E%3Cpath d='M8 26V12h3v-2h3v2h4v-2h3v2h3v14z' fill='%23c9a558'/%3E%3Crect x='14' y='19' width='4' height='7' fill='%23101518'/%3E%3C/svg%3E" />
+<style>
+  :root { color-scheme: dark; }
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #0b0d10; }
+  canvas { display: block; }
+  #hud {
+    position: fixed; left: 26px; bottom: 22px;
+    font: 500 10px/1.7 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    letter-spacing: .2em; text-transform: uppercase;
+    color: #f3ecdc; text-shadow: 0 1px 14px rgba(0,0,0,.65);
+    pointer-events: none; opacity: .88; transition: opacity 1.4s ease;
+  }
+  #hud strong { display: block; font-weight: 600; font-size: 12px; letter-spacing: .3em; margin-bottom: 3px; }
+  #hud.dim { opacity: .22; }
+  #loader {
+    position: fixed; inset: 0; display: grid; place-items: center;
+    background: #0b0d10; color: #cfc7b6; z-index: 5;
+    font: 500 11px/1 ui-monospace, SFMono-Regular, monospace; letter-spacing: .34em;
+    transition: opacity .9s ease;
+  }
+  #loader.done { opacity: 0; pointer-events: none; }
+  #back, #model-tag {
+    position: fixed; top: 16px; z-index: 4;
+    display: inline-flex; align-items: center;
+    padding: 7px 10px;
+    border: 1px solid rgba(243,236,220,.16);
+    background: rgba(8,12,14,.5);
+    -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+    font: 500 10px/1.4 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    letter-spacing: .18em; text-transform: uppercase;
+    color: rgba(243,236,220,.86); text-decoration: none;
+    text-shadow: 0 1px 2px rgba(0,0,0,.35);
+    transition: color .2s ease, background .2s ease, border-color .2s ease;
+  }
+  #back { left: 20px; }
+  #back:hover { color: #f3ecdc; background: rgba(8,12,14,.72); border-color: rgba(201,165,88,.55); }
+  #back b { color: #c9a558; font-weight: 500; margin-right: .55em; }
+  #model-tag { right: 20px; gap: .6em; }
+  #model-tag .dot { width: 5px; height: 5px; flex: none; background: #4d6bfe; border-radius: 50%; box-shadow: 0 0 8px rgba(77,107,254,.7); }
+  @media (max-width: 640px) {
+    #back, #model-tag { top: 10px; padding: 6px 8px; font-size: 9px; letter-spacing: .13em; }
+    #back { left: 10px; }
+    #model-tag { right: 10px; }
+  }
+</style>
+</head>
+<body>
+<div id="loader">RAISING THE KEEP</div>
+<a id="back" href="../../"><b>←</b>Three.js outputs</a>
+<div id="model-tag"><span class="dot"></span>DeepSeek V4.1 Flash</div>
+<div id="hud"><strong>Castle</strong>drag to orbit · scroll to zoom</div>
+
+<script>
+  window.__errors = [];
+  addEventListener('error', e => window.__errors.push(String(e.message || e.error)));
+  addEventListener('unhandledrejection', e => window.__errors.push(String(e.reason)));
+</script>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+  }
+}
+</script>
+
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>

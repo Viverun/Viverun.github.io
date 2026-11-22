@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Three.js Outputs — Model Testings · Jamil Khan</title>
+<meta name="description" content="A growing gallery of 3D scenes built by AI models from one fixed brief. The first output is a moated castle by DeepSeek V4.1 Flash, rendered live in WebGL." />
+<meta name="author" content="Jamil Khan" />
+<meta name="theme-color" content="#f4efe6" />
+<link rel="canonical" href="https://viverun.dev/model-testings/threejs-ouputs/" />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Jamil Khan" />
+<meta property="og:url" content="https://viverun.dev/model-testings/threejs-ouputs/" />
+<meta property="og:title" content="Three.js Outputs — Model Testings" />
+<meta property="og:description" content="One brief, given to several models. The first output: a moated castle by DeepSeek V4.1 Flash, rendered live in WebGL." />
+<meta property="og:image" content="https://viverun.dev/model-testings/threejs-ouputs/assets/deepseek-castle.jpg" />
+<meta property="og:image:width" content="1600" />
+<meta property="og:image:height" content="1000" />
+<meta property="og:image:alt" content="A stone castle with a moat, bridge and windmill, rendered in Three.js." />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Three.js Outputs — Model Testings" />
+<meta name="twitter:description" content="One brief, given to several models. The first output: a moated castle by DeepSeek V4.1 Flash." />
+<meta name="twitter:image" content="https://viverun.dev/model-testings/threejs-ouputs/assets/deepseek-castle.jpg" />
+
+<link rel="icon" href="../../assets/favicon.svg?v=4" type="image/svg+xml" />
+<link rel="stylesheet" href="../../assets/style.css?v=17" />
+<style>
+  /* =========================================================
+     Model testings — a gallery in the same paper-and-ink voice
+     ========================================================= */
+  :root { --mt-blue: #4d6bfe; }
+
+  .mt-wrap {
+    width: 100%; max-width: var(--wide); margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+
+  .mt-nav { display: flex; align-items: center; gap: clamp(1rem, 2.5vw, 1.8rem); }
+  .mt-nav a {
+    font-size: var(--t-micro); font-weight: 600; letter-spacing: 0.14em;
+    text-transform: uppercase; text-decoration: none; color: var(--muted);
+  }
+  .mt-nav a:hover, .mt-nav a[aria-current="page"] { color: var(--ink); }
+  .mt-nav a[aria-current="page"] { text-decoration: underline; text-underline-offset: 5px; }
+
+  .mt-kicker {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;
+    padding-bottom: 0.9rem; border-bottom: 1px solid var(--ink);
+    font-size: var(--t-micro); font-weight: 500; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  .mt-kicker b { color: var(--ink); font-weight: 600; }
+
+  .mt-hero { border-bottom: 1px solid var(--ink); padding-block: clamp(2.5rem, 6vw, 5rem) clamp(2rem, 5vw, 3.5rem); }
+  .mt-hero-grid {
+    display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    gap: clamp(2rem, 6vw, 5rem); align-items: end; padding-top: clamp(1.5rem, 4vw, 3rem);
+  }
+  .mt-title {
+    margin: 0;
+    font-size: clamp(3rem, 8.8vw, 7.6rem); font-weight: 800; line-height: 0.89;
+    letter-spacing: -0.06em; text-transform: uppercase;
+  }
+  .mt-title .ink {
+    display: inline-block; padding: 0 0.07em 0.02em;
+    background: var(--ink); color: var(--paper);
+  }
+  .mt-lede {
+    max-width: 46ch; margin: 0 0 2rem;
+    font-size: clamp(1rem, 1.5vw, 1.15rem); font-weight: 600; line-height: 1.65;
+    text-wrap: balance;
+  }
+  .mt-sub { max-width: 46ch; margin: 0; font-size: var(--t-small); line-height: 1.8; color: var(--muted); }
+
+  .mt-index {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    margin-top: 2rem; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink);
+  }
+  .mt-index li { padding: 0.8rem 0.85rem; border-left: 1px solid var(--rule); }
+  .mt-index li:first-child { border-left: 0; padding-left: 0; }
+  .mt-index span {
+    display: block; font-size: var(--t-micro); font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
+  }
+  .mt-index b { display: block; margin-top: 0.15rem; font-size: 1.15rem; font-weight: 800; letter-spacing: -0.02em; }
+
+  .mt-section { padding-block: clamp(3rem, 7vw, 6rem); border-bottom: 1px solid var(--ink); }
+  .mt-section-head {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 2rem;
+    padding-bottom: 0.9rem; border-bottom: 1px solid var(--ink); margin-bottom: 1.75rem;
+  }
+  .mt-section-head .mt-label { flex: 1; }
+  .mt-label {
+    font-size: var(--t-micro); font-weight: 600; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--ink);
+  }
+  .mt-head-note { font-size: var(--t-micro); color: var(--muted); white-space: nowrap; }
+
+  /* -------- model card -------- */
+  .model-card {
+    display: grid; grid-template-columns: minmax(0, 1.42fr) minmax(0, 1fr);
+    border: 1px solid var(--ink); background: var(--paper); text-decoration: none;
+  }
+  .model-media {
+    position: relative; overflow: hidden; aspect-ratio: 16 / 10;
+    border-right: 1px solid var(--ink); background: #0b0d10;
+  }
+  .model-media img {
+    display: block; width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.9s var(--ease), filter 0.6s var(--ease);
+  }
+  .model-card:hover .model-media img { transform: scale(1.025); filter: saturate(1.06); }
+
+  .model-open {
+    position: absolute; top: 0.9rem; right: 0.9rem;
+    display: inline-flex; align-items: center; gap: 0.55em;
+    padding: 0.45rem 0.65rem; border: 1px solid var(--ink);
+    background: var(--paper); color: var(--ink);
+    font-size: var(--t-micro); font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; transition: background 0.2s, color 0.2s;
+  }
+  .model-card:hover .model-open { background: var(--ink); color: var(--paper); }
+
+  .model-info {
+    display: flex; flex-direction: column; gap: 1rem;
+    padding: clamp(1.2rem, 2.8vw, 1.9rem); min-width: 0;
+  }
+  .model-brand { display: flex; align-items: center; gap: 0.75rem; }
+  .model-logo { width: 30px; height: 30px; flex: none; }
+  .model-maker {
+    margin: 0; font-size: 1rem; font-weight: 800; line-height: 1.1;
+    letter-spacing: -0.01em; text-transform: uppercase;
+  }
+  .model-ver {
+    margin: 0.15rem 0 0; font-size: var(--t-micro); color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+  .model-num {
+    margin-left: auto; font-size: var(--t-micro); font-weight: 600;
+    letter-spacing: 0.12em; color: var(--muted);
+  }
+
+  .model-title {
+    margin: 0.4rem 0 0;
+    font-size: clamp(1.7rem, 3vw, 2.5rem); font-weight: 800;
+    line-height: 0.98; letter-spacing: -0.04em; text-transform: uppercase;
+  }
+  .model-desc {
+    margin: 0; max-width: 42ch; font-size: var(--t-small); line-height: 1.8;
+    color: var(--muted);
+  }
+
+  .model-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.15rem; }
+  .model-tags li {
+    padding: 0.18rem 0.5rem; border: 1px solid var(--rule);
+    font-size: var(--t-micro); letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink);
+  }
+
+  .model-facts {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    margin-top: auto; padding-top: 0.9rem; border-top: 1px solid var(--rule);
+  }
+  .model-facts > div { padding-left: 0.8rem; border-left: 1px solid var(--rule); }
+  .model-facts > div:first-child { padding-left: 0; border-left: 0; }
+  .model-facts dt {
+    font-size: var(--t-micro); letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  .model-facts dd { margin: 0.2rem 0 0; font-size: var(--t-small); font-weight: 700; }
+
+  .models-foot {
+    display: flex; justify-content: space-between; align-items: baseline;
+    flex-wrap: wrap; gap: 0.75rem 1.5rem;
+    margin-top: 0.9rem; font-size: var(--t-micro); color: var(--muted);
+  }
+  .models-foot a {
+    color: var(--ink); text-decoration: underline;
+    text-underline-offset: 4px; text-decoration-thickness: 1px;
+  }
+
+  /* -------- the brief -------- */
+  .mt-brief { background: var(--paper-deep); }
+  .brief-grid {
+    display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: clamp(2rem, 6vw, 5rem); align-items: start;
+  }
+  .brief-title {
+    margin: 0.9rem 0 1.2rem;
+    font-size: clamp(1.6rem, 3.4vw, 2.6rem); font-weight: 800;
+    line-height: 1.03; letter-spacing: -0.04em; text-transform: uppercase;
+    text-wrap: balance;
+  }
+  .brief-copy { max-width: 44ch; font-size: var(--t-small); line-height: 1.8; color: var(--muted); }
+  .brief-list { border-top: 1px solid var(--ink); }
+  .brief-list li {
+    display: grid; grid-template-columns: 2.5rem 1fr; gap: 0.75rem;
+    padding: 0.9rem 0; border-bottom: 1px solid var(--rule);
+  }
+  .brief-list .n {
+    font-size: var(--t-micro); font-weight: 600; color: var(--muted);
+    letter-spacing: 0.08em; line-height: 1.9;
+  }
+  .brief-list p { margin: 0; font-size: var(--t-small); line-height: 1.7; }
+  .brief-list b { font-weight: 700; }
+  .mt-note {
+    margin-top: 1.5rem; padding: 0.85rem 1rem; border: 1px solid var(--ink);
+    font-size: var(--t-micro); line-height: 1.8; color: var(--muted);
+  }
+
+  .mt-footer { border-top: 0; }
+
+  @media (max-width: 940px) {
+    .model-card { grid-template-columns: 1fr; }
+    .model-media { border-right: 0; border-bottom: 1px solid var(--ink); }
+  }
+  @media (max-width: 860px) {
+    .mt-hero-grid, .brief-grid { grid-template-columns: 1fr; align-items: start; }
+    .mt-hero-grid { gap: 1.75rem; }
+    .mt-lede { margin-bottom: 1.25rem; }
+  }
+  @media (max-width: 620px) {
+    .mt-nav a:last-child { display: none; }
+    .mt-kicker .k-date { display: none; }
+    .mt-title { font-size: clamp(2.5rem, 15vw, 4.2rem); }
+    .mt-index { grid-template-columns: 1fr 1fr 1fr; }
+    .mt-index li { padding-inline: 0.5rem; }
+    .model-facts { grid-template-columns: 1fr 1fr; gap: 0.75rem 0; }
+    .model-facts > div:nth-child(3) { grid-column: 1 / -1; padding-left: 0; border-left: 0; border-top: 1px solid var(--rule); padding-top: 0.6rem; }
+    .mt-head-note { display: none; }
+    .model-open { top: 0.6rem; right: 0.6rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .model-media img { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#models">Skip to models</a>
+
+<header class="site-nav" id="site-nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <svg class="mark" viewBox="10 12 44 40" aria-hidden="true">
+        <path d="M12 14h9.5L27 40l5.5-26H42L32 50H22z" />
+        <rect class="cursor-bar" x="48" y="12" width="4" height="40" />
+      </svg>
+      Jamil Khan
+    </a>
+    <nav class="mt-nav" aria-label="Model testings">
+      <a href="/model-testings/threejs-ouputs/" aria-current="page">Three.js outputs</a>
+      <a href="/">viverun.dev ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="mt-hero" id="top">
+    <div class="mt-wrap">
+      <div class="mt-kicker">
+        <span><b>Model testings</b> / 001</span>
+        <span class="k-date">Collected Nov 2026</span>
+      </div>
+
+      <div class="mt-hero-grid">
+        <h1 class="mt-title">Three.js<br /><span class="ink">outputs.</span></h1>
+
+        <div>
+          <p class="mt-lede">One brief, given to several models. What comes back is a single-page 3D scene — shown here exactly as it ran.</p>
+          <p class="mt-sub">No reference images, no imported models, no retouching. Just code, procedural textures, and whatever the model decided a castle should feel like.</p>
+
+          <ul class="mt-index" aria-label="Collection index">
+            <li><span>Models</span><b>01</b></li>
+            <li><span>Scenes</span><b>01</b></li>
+            <li><span>Errors</span><b>0</b></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-section" id="models">
+    <div class="mt-wrap">
+      <div class="mt-section-head">
+        <p class="mt-label">The outputs</p>
+        <p class="mt-head-note">Drag to orbit · scroll to zoom</p>
+      </div>
+
+      <a class="model-card" href="./deepseek/castle/">
+        <figure class="model-media">
+          <picture>
+            <source srcset="./assets/deepseek-castle.webp" type="image/webp" />
+            <img src="./assets/deepseek-castle.jpg" width="1600" height="1000"
+                 alt="A moated stone castle with corner towers and red banners, a windmill on the left and a road leading to the gate."
+                 loading="lazy" decoding="async" />
+          </picture>
+          <span class="model-open">Enter scene <span aria-hidden="true">↗</span></span>
+        </figure>
+
+        <div class="model-info">
+          <div class="model-brand">
+            <img class="model-logo" src="./assets/deepseek.svg" alt="" width="30" height="30" />
+            <div>
+              <p class="model-maker">DeepSeek</p>
+              <p class="model-ver">V4.1 Flash · Free</p>
+            </div>
+            <span class="model-num">001</span>
+          </div>
+
+          <h2 class="model-title">The castle</h2>
+          <p class="model-desc">A moat, a gatehouse, a keep and a working windmill. Built from boxes, cylinders and canvas textures — no imported models, no image assets.</p>
+
+          <ul class="model-tags" aria-label="Built with">
+            <li>Three.js r170</li>
+            <li>Procedural</li>
+            <li>WebGL</li>
+          </ul>
+
+          <dl class="model-facts">
+            <div><dt>Source</dt><dd>5 modules</dd></div>
+            <div><dt>Assets</dt><dd>0 images</dd></div>
+            <div><dt>Errors</dt><dd>0</dd></div>
+          </dl>
+        </div>
+      </a>
+
+      <p class="models-foot">
+        <span>Scenes open full-screen. A mouse and a recent browser are enough.</span>
+        <a href="https://github.com/Viverun/Viverun.github.io/tree/main/model-testings/threejs-ouputs/deepseek/castle" target="_blank" rel="noopener">View the source ↗</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="mt-section mt-brief" id="brief">
+    <div class="mt-wrap brief-grid">
+      <div>
+        <p class="mt-label">The brief</p>
+        <h2 class="brief-title">Same prompt.<br />No retouching.</h2>
+        <p class="brief-copy">Every model gets the same paragraph and the same empty folder. The scene is then published as delivered — including whatever it gets wrong.</p>
+      </div>
+
+      <div>
+        <ol class="brief-list">
+          <li><span class="n">01</span><p><b>Build a medieval castle</b> in Three.js that fills the browser window and can be orbited with the mouse.</p></li>
+          <li><span class="n">02</span><p><b>Keep it to one page.</b> An HTML entry point, ES modules, and the Three.js CDN are the only allowed dependencies.</p></li>
+          <li><span class="n">03</span><p><b>Make every texture from code.</b> No downloaded models, no image files, no environment maps from the internet.</p></li>
+          <li><span class="n">04</span><p><b>Give it weather and life.</b> A sky, water, moving banners, smoke, birds, and at least one thing that turns.</p></li>
+        </ol>
+
+        <p class="mt-note">Screenshots come from the live build. Console-error counts are measured in a fresh page load; “0” means no uncaught errors or failed resource requests.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer mt-footer">
+  <div class="section-inner footer-inner">
+    <nav class="footer-nav" aria-label="Sections">
+      <a href="/">viverun.dev</a>
+      <a href="/#projects">Projects</a>
+      <a href="/devlith/">Journal</a>
+      <a href="/model-testings/threejs-ouputs/">Model testings</a>
+    </nav>
+    <div class="footer-meta">
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
