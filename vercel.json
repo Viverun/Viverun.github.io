@@ -1,0 +1,16 @@
+{
+  "rewrites": [
+    {
+      "source": "/devlith",
+      "destination": "https://viverun.github.io/devlith/"
+    },
+    {
+      "source": "/devlith/",
+      "destination": "https://viverun.github.io/devlith/"
+    },
+    {
+      "source": "/devlith/:path*",
+      "destination": "https://viverun.github.io/devlith/:path*"
+    }
+  ]
+}
