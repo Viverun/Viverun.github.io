@@ -16,6 +16,22 @@
     {
       "source": "/devlith/:path*",
       "destination": "https://viverun.github.io/devlith/:path*"
+    },
+    {
+      "source": "/model-testing",
+      "destination": "https://viverun.github.io/devlith/model-testing/"
+    },
+    {
+      "source": "/model-testing/",
+      "destination": "https://viverun.github.io/devlith/model-testing/"
+    },
+    {
+      "source": "/model-testing/:path*/",
+      "destination": "https://viverun.github.io/devlith/model-testing/:path*/"
+    },
+    {
+      "source": "/model-testing/:path*",
+      "destination": "https://viverun.github.io/devlith/model-testing/:path*"
     }
   ]
 }
